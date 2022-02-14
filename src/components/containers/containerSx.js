@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import CurrentCity from '../sezioni/currentCity';
+import CurrentWeather from '../sezioni/currentWeather';
+
 
 
 
@@ -9,6 +11,7 @@ const ContainerSx = () => {
         <Container>
             <div className="box_top">
                 <CurrentCity />
+                <CurrentWeather />
             </div>
             <div className="box_bottom">
                 
