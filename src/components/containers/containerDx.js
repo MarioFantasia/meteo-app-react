@@ -17,7 +17,7 @@ const ContainerDx = () => {
 const Container = styled.div`
     width: 35%;
     height: 100vh;
-    padding: 25px 0;
+    padding: 40px 0;
     .box {
         width: 100%;
         height: 100%;

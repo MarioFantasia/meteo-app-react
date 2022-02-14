@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import CurrentCity from '../sezioni/currentCity';
 import CurrentWeather from '../sezioni/currentWeather';
-
+import Today from '../sezioni/today';
 
 
 
@@ -14,7 +14,7 @@ const ContainerSx = () => {
                 <CurrentWeather />
             </div>
             <div className="box_bottom">
-                
+                <Today />
             </div>
         </Container>
     )
@@ -23,7 +23,7 @@ const ContainerSx = () => {
 const Container = styled.div`
         width: 65%;
         height: 100vh;
-        padding: 25px 0;
+        padding: 40px 0;
         display: flex;
         flex-direction: column;
         
