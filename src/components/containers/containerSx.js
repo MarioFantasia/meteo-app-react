@@ -1,21 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-/* import CurrentWeather from './currentWeather';
-import CurrentCity from './currentCity';
-import Today from './today';
-import WeekWeather from './weekWeather'; */
+import CurrentCity from '../sezioni/currentCity';
+
 
 
 const ContainerSx = () => {
     return (
         <Container>
             <div className="box_top">
-                {/* <CurrentWeather />
-                <CurrentCity /> */}
+                <CurrentCity />
             </div>
             <div className="box_bottom">
-                {/* <Today />
-                <WeekWeather /> */}
+                
             </div>
         </Container>
     )
@@ -33,11 +29,11 @@ const Container = styled.div`
             width: 100%;
             height: 100%;
             background-color:red;
-            margin-bottom: 15px;
+            /* margin-bottom: 15px; */
         }
 
         .box_bottom {
-            margin-top: 15px;
+            /* margin-top: 15px; */
             height: 100%;
             background-color:green;
         }
