@@ -1,12 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
+import { configureStore } from '@reduxjs/toolkit';
+import { Provider } from 'react-redux';
+import rootReducer from './redux';
+
 import './index.css';
 import App from './App';
 
-ReactDOM.render(
-  <React.StrictMode>
+/* configurazione dello store */
+const store = configureStore({ reducer: rootReducer })
+
+render(
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
