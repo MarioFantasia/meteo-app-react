@@ -22,7 +22,7 @@ const CurrentWeather = () => {
         return setCities.map((elm, index) => {
             if (index === 1) {
                 return (
-                    <Style>
+                    <Style key={index}>
                         <h2>{elm.currently.temp}°</h2>
                         <div className="image">
                             <img src={elm.currently.icon} alt={elm.weather} />

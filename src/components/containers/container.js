@@ -19,7 +19,7 @@ const MainContainer = () => {
 
 const Container = styled.div`
         margin: auto;
-        width: 68%;
+        width: 70%;
         height: 100vh;
         background-color: white;
     .container {

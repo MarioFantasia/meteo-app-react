@@ -23,21 +23,21 @@ const ContainerSx = () => {
 const Container = styled.div`
         width: 65%;
         height: 100vh;
-        padding: 20px;
+        padding: 25px 0;
         display: flex;
         flex-direction: column;
         
         .box_top {
             position: relative;
             width: 100%;
-            height: 100%;
+            height: 50%;
             background-color:red;
             /* margin-bottom: 15px; */
         }
 
         .box_bottom {
             /* margin-top: 15px; */
-            height: 100%;
+            height: 50%;
             background-color:green;
         }
 `;

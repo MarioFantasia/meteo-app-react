@@ -1,17 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-/* import OtherCities from './otherCities';
-import Search from './search';
-import Localization from './localization'; */
+import OtherCities from '../sezioni/otherCities';
+
 
 
 const ContainerDx = () => {
     return (
         <Container>
             <div className="box">
-                {/* <OtherCities />
-                <Search/>
-                <Localization/> */}
+                <OtherCities />
             </div>
         </Container>
     )
@@ -20,7 +17,7 @@ const ContainerDx = () => {
 const Container = styled.div`
     width: 35%;
     height: 100vh;
-    padding: 20px;
+    padding: 25px 0;
     .box {
         width: 100%;
         height: 100%;

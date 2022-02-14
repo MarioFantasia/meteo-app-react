@@ -36,15 +36,15 @@ const CurrentCity = () => {
 
     /* Cosa esporta il componente */
     return (
-        <Style>
+        <Section>
             <div className="box">
                 {renderCities()}
             </div>
-        </Style>
+        </Section>
     );
 };
 
-const Style = styled.div`
+const Section = styled.div`
     height: 460px;
     background-color: #89bedc;
     display: flex;
