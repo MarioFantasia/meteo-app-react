@@ -23,25 +23,19 @@ const ContainerSx = () => {
 
 const Container = styled.div`
         width: 65%;
-        height: 100vh;
-        padding: 40px 0;
         display: flex;
         flex-direction: column;
         
         .box_top {
             position: relative;
             width: 100%;
-            height: 50%;
-            background-color:red;
-            /* margin-bottom: 15px; */
         }
 
         .box_bottom {
-            /* margin-top: 15px; */
-            height: 50%;
-            background-color:green;
+            height: 600px;
             justify-content: space-between;
             display: flex;
+            padding-top: 20px ;
         }
 `;
 

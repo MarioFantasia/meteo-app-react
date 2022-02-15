@@ -67,10 +67,12 @@ const Section = styled.div`
     display: flex;
     width: 30%;
     flex-direction: column;
+    padding-top: 5px;
     h2 {
         width: 30%;
         font-size: 30px;
-        margin: 20px;
+        margin: 0 20px 25px 20px;
+        padding-top: 45px;
     }
 `;
 
@@ -78,8 +80,8 @@ const Section = styled.div`
 const Box = styled.div`
     color: white;
     width: 100%;
-    height: 350px;
-    padding: 35px 20px;
+    height: 380px;
+    padding: 70px 20px;
     border-radius: 20px;
     background: linear-gradient(#577ce8, #6ea7f1);
     text-align:center;
@@ -112,6 +114,11 @@ const Box = styled.div`
     .time li {
         font-size: 20px;
         line-height: 45px;
+    }
+
+    .temperature li:first-child {
+        font-size: 35px;
+        font-weight: bold;
     }
 
     /* posizionamento 'now' */

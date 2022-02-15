@@ -143,7 +143,7 @@ const BoxSelectPeriod = styled.div`
     border-radius: 20px;
     display: flex;
     position: absolute;
-    top: 10px;
+    top: 35px;
     background-color: white;
 
 
@@ -161,6 +161,7 @@ const BoxSelectPeriod = styled.div`
         height:100px;
         font-size: 30px;
         border-radius: 20px 20px 0 0;
+        padding-top: 20px;
     }
 
     .gradient {
@@ -174,7 +175,7 @@ const BoxSelectPeriod = styled.div`
 
 /* styled-components */
 const Box = styled.div`
-    height: 350px;
+    height: 385px;
     border-radius: 20px;
     margin: auto 0;
     background: linear-gradient(#577ce8, #6ea7f1);
@@ -215,7 +216,7 @@ const UnderStyles = styled.div `
     flex-direction: column;
     justify-content: space-evenly;
     min-width: 155px; 
-    height: 280px;
+    height: 300px;
     border-radius: 20px;
     /* background: linear-gradient(#577ce8, #6ea7f1); */
     background-color: blue;
@@ -246,7 +247,7 @@ const UnderStyles = styled.div `
 const MonthWeather = styled.div`
     min-width: 90%;
     margin: 0 33px;
-    height: 280px;
+    height: 300px;
     background-color: blue;
     border-radius: 20px;
     display: flex;

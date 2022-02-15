@@ -59,13 +59,11 @@ const Section = styled.div`
     height: 460px;
     flex-direction: column;
     align-items: center;
-    background-color: red ;
     justify-content: space-between;
 
     .add_city {
         width: 80%;
         line-height:110px;
-        background-color: green;
         text-align: center;
         display: flex;
         justify-content: center;

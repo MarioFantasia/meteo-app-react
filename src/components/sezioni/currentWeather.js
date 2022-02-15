@@ -55,7 +55,7 @@ const Style = styled.div`
     text-align:center;
     position: absolute;
     top: calc(230px - 125px);
-    left: -50px;
+    left: -60px;
     color: white;
     h2 {
         width: 120px;
