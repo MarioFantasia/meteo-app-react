@@ -97,20 +97,20 @@ const WeekWeather = () => {
     return (
         <Section>
             <BoxSelectPeriod>
-                    <div className="this_week">
-                        <h3 className={show ? 'gradient' : ''} onClick={() => setShow(true)}>
-                            This week
-                        </h3>
-                    </div>
+                <div className="this_week">
+                    <h3 className={show ? 'gradient' : ''} onClick={() => setShow(true)}>
+                        This week
+                    </h3>
+                </div>
 
-                    <div className="this_month">
-                        <h3 className={show ? '' : 'gradient'} onClick={() => setShow(false)}>
-                            This month
-                        </h3>
-                    </div>
-                </BoxSelectPeriod>
+                <div className="this_month">
+                    <h3 className={show ? '' : 'gradient'} onClick={() => setShow(false)}>
+                        This month
+                    </h3>
+                </div>
+            </BoxSelectPeriod>
+
             <Box>
-                
                 <Slider id="slider">
                     { show? (weekInfos()) : (monthInfos()) }
                     {/* {weekInfos()}
@@ -132,6 +132,7 @@ const Section =styled.div`
     position:relative;
     display: flex;
     flex-direction:column;
+    justify-content: flex-end;
 `;
 
 
@@ -175,9 +176,9 @@ const BoxSelectPeriod = styled.div`
 
 /* styled-components */
 const Box = styled.div`
-    height: 385px;
+    height: 380px;
+    margin-bottom: 20px;
     border-radius: 20px;
-    margin: auto 0;
     background: linear-gradient(#577ce8, #6ea7f1);
     display: flex;
     flex-direction: column;

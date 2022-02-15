@@ -65,6 +65,7 @@ const Today = () => {
 /* Section */
 const Section = styled.div`
     display: flex;
+    height: 500px;
     width: 30%;
     flex-direction: column;
     padding-top: 5px;

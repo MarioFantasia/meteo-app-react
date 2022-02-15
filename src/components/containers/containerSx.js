@@ -32,7 +32,7 @@ const Container = styled.div`
         }
 
         .box_bottom {
-            height: 600px;
+            height: 500x;
             justify-content: space-between;
             display: flex;
             padding-top: 20px ;
