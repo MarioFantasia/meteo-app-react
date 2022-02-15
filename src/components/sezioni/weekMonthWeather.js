@@ -113,9 +113,6 @@ const WeekWeather = () => {
             <Box>
                 <Slider id="slider">
                     { show? (weekInfos()) : (monthInfos()) }
-                    {/* {weekInfos()}
-                    {monthInfos()} */}
-                    
                 </Slider>
                 <div className="point">
                     <span><i id="left" className="fa-solid fa-circle" onClick={horizontalScroll} ></i> </span>
@@ -135,17 +132,16 @@ const Section =styled.div`
     justify-content: flex-end;
 `;
 
-
-
-
 const BoxSelectPeriod = styled.div`
     width: 70%;
-    height: 100px;
+    height: 110px;
     border-radius: 20px;
     display: flex;
     position: absolute;
-    top: 35px;
+    top: 40px;
     background-color: white;
+    box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.45);
+
 
 
     .this_week, .this_month {
@@ -166,12 +162,11 @@ const BoxSelectPeriod = styled.div`
     }
 
     .gradient {
-        background-color: #587DE8;
+        background-color: #5679E8;
         color: white;
     }
 
 `;
-
 
 
 /* styled-components */
@@ -179,16 +174,19 @@ const Box = styled.div`
     height: 380px;
     margin-bottom: 20px;
     border-radius: 20px;
-    background: linear-gradient(#577ce8, #6ea7f1);
+    background: linear-gradient(#5679E8, #72aff3);
     display: flex;
     flex-direction: column;
     justify-content:space-evenly;
     justify-items: center;
     transform: translateY(20px);
+    box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.45);
+
 
     .point {
-        margin: 0 auto;
-        color: rgba(255, 255, 255, 0.5)
+        margin: 0 auto 10px auto;
+        color: rgba(255, 255, 255, 0.5);
+        display: inline;
     }
 
     i:active {
@@ -203,9 +201,10 @@ const Slider = styled.div`
     display: flex;
     justify-content: space-between;
     width: 650px;
+    height: 600px;
     border-radius: 20px;
     overflow-x: scroll;
-    padding-right: 5px;
+    padding: 25px 5px 0 0;
     &::-webkit-scrollbar {
     display: none;
     }
@@ -219,8 +218,9 @@ const UnderStyles = styled.div `
     min-width: 155px; 
     height: 300px;
     border-radius: 20px;
-    /* background: linear-gradient(#577ce8, #6ea7f1); */
-    background-color: blue;
+    background: linear-gradient(#5679E8, #72aff3);
+    box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.45);
+
     text-align:center;
     padding: 20px;
     margin: 0 30px;
@@ -249,7 +249,8 @@ const MonthWeather = styled.div`
     min-width: 90%;
     margin: 0 33px;
     height: 300px;
-    background-color: blue;
+    background: linear-gradient(#5679E8, #72aff3);
+    box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.45);
     border-radius: 20px;
     display: flex;
     padding: 30px;

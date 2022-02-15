@@ -69,6 +69,7 @@ const Section = styled.div`
     width: 30%;
     flex-direction: column;
     padding-top: 5px;
+    
     h2 {
         width: 30%;
         font-size: 30px;
@@ -84,11 +85,13 @@ const Box = styled.div`
     height: 380px;
     padding: 70px 20px;
     border-radius: 20px;
-    background: linear-gradient(#577ce8, #6ea7f1);
+    background: linear-gradient(#5679E8, #6FA5EA);
     text-align:center;
     overflow-y: scroll;
     display: flex;
     justify-content: space-between;
+    box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.45);
+
 
     &::-webkit-scrollbar {
     display: none;

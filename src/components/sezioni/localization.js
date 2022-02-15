@@ -6,7 +6,7 @@ const localization = () => {
         <Section>
             <h2>Localization</h2>
             <Box>
-                <i class="fa-solid fa-location-dot"></i>
+                <i className="fa-solid fa-location-dot"></i>
                 <h3>Add Localization</h3>
             </Box>
         </Section>
@@ -26,7 +26,7 @@ const Section = styled.div`
 const Box = styled.div`
     width: 80%;
     height: 150px;
-    background-color: blue;
+    background: linear-gradient(#5679E8, #6FA5EA);
     margin: 20px auto;
     border-radius: 20px;
     color: white;
@@ -35,6 +35,8 @@ const Box = styled.div`
     padding: 10px;
     text-align: center;
     justify-content: center;
+    box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.45);
+
 
     i {
         font-size:40px;

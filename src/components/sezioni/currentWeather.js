@@ -48,15 +48,18 @@ const Style = styled.div`
     display: flex;
     flex-direction: column;
     justify-content:center;
-    width: 150px;
+    width: 170px;
     height: 250px;
     border-radius: 20px;
-    background: linear-gradient(#577ce8, #6ea7f1);
+    background: linear-gradient(#5679E8, #6FA5EA);
     text-align:center;
     position: absolute;
     top: calc(230px - 125px);
-    left: -60px;
+    left: -90px;
     color: white;
+    padding-left: 20px;
+    box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.45);
+    
     h2 {
         width: 120px;
         font-size: 50px ;

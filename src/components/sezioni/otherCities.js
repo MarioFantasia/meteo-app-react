@@ -61,6 +61,7 @@ const Section = styled.div`
     align-items: center;
     justify-content: space-between;
 
+
     .add_city {
         width: 80%;
         line-height:110px;
@@ -93,6 +94,8 @@ const City = styled.div`
     color: white;
     display: flex;
     justify-content: space-between;
+    box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.45);
+
 
     h3 {
         font-size: 25px;

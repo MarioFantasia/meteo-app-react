@@ -23,10 +23,10 @@ const CurrentCity = () => {
         return setCities.map((city, index) => {
                 if (city.id === 1) {
                     return (
-                        <div key={index}>
+                        <div className="box" key={index}>
                             <h2>{city.name}</h2>
                             <h3>{city.unixTime.day} {city.unixTime.date}, {city.unixTime.month}</h3>
-                            <h3>{city.currently.weather}</h3>
+                            <h4>{city.currently.weather}</h4>
                         </div>
                     );
                 }
@@ -37,24 +37,37 @@ const CurrentCity = () => {
     /* Cosa esporta il componente */
     return (
         <Section>
-            <div className="box">
-                {renderCities()}
-            </div>
+            {renderCities()}
         </Section>
     );
 };
 
 const Section = styled.div`
     height: 460px;
-    background-color: #89bedc;
-    display: flex;
+    background: linear-gradient(to right, #BCD6ED,  #89BEDD);
+    border-radius: 20px;
+    box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.45);
+
+    
 
     .box {
         height:150px;
-        color: white;
+        color: #01175F;
         position:absolute;
-        top: 75px;
+        top: 90px;
         left: 150px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    h4 {
+        font-size: 20px;
+        font-weight: 300;
     }
 
 `;

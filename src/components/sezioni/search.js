@@ -8,7 +8,7 @@ const search = () => {
             <Box >
                 <div className="search">
                     <input type="text" placeholder="ex: Miami" />
-                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button><i className="fa-solid fa-magnifying-glass"></i></button>
                 </div>
             </Box >
         </Section>
@@ -32,6 +32,8 @@ const Box = styled.div`
     margin: 0 auto;
     background-color: white;
     border-radius: 20px;
+    box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.45);
+
 
     .search {
         border: 1px solid;

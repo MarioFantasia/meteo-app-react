@@ -19,10 +19,9 @@ const MainContainer = () => {
 
 const Container = styled.div`
         margin: auto;
-        width: 75%;
-        padding: 20px;
+        width: 80%;
+        padding: 35px;
         overflow: hidden;
-        background-color: grey;
     .container {
         display: flex;
     }
