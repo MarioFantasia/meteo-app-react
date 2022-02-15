@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import CurrentCity from '../sezioni/currentCity';
 import CurrentWeather from '../sezioni/currentWeather';
 import Today from '../sezioni/today';
-
+import WeekMonthWeather from '../sezioni/weekMonthWeather';
 
 
 const ContainerSx = () => {
@@ -15,6 +15,7 @@ const ContainerSx = () => {
             </div>
             <div className="box_bottom">
                 <Today />
+                <WeekMonthWeather />
             </div>
         </Container>
     )
@@ -39,6 +40,8 @@ const Container = styled.div`
             /* margin-top: 15px; */
             height: 50%;
             background-color:green;
+            justify-content: space-between;
+            display: flex;
         }
 `;
 

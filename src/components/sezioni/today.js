@@ -65,8 +65,10 @@ const Today = () => {
 /* Section */
 const Section = styled.div`
     display: flex;
+    width: 30%;
     flex-direction: column;
     h2 {
+        width: 30%;
         font-size: 30px;
         margin: 20px;
     }
@@ -75,7 +77,7 @@ const Section = styled.div`
 /* Box */
 const Box = styled.div`
     color: white;
-    width: 30%;
+    width: 100%;
     height: 350px;
     padding: 35px 20px;
     border-radius: 20px;
@@ -95,6 +97,7 @@ const Box = styled.div`
         justify-content: space-between;
     }
 
+
     .temperature, .time {
         width: 40%;
         position: relative;
@@ -111,31 +114,8 @@ const Box = styled.div`
         line-height: 45px;
     }
 
-    /* Barra timeline */
-    .temperature::after {
-        content: '';
-        width: 8px;
-        height: 620%; /* brutto ma non sapevo come altro fare per fare arrivare la barra in fondo */
-        background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0.5) 10%);
-        position: absolute;
-        top: 10px;
-        left: 120px;
-    }
-
-    /* Indicatori  */
-    .time li::before {
-        content: '';
-        width: 25px;
-        height: 25px;
-        border-radius: 50%;
-        background-color: white;
-        position: absolute;
-        left: -40px;
-        margin-top: 10px;
-    }
-
     /* posizionamento 'now' */
-    .time li:first-child::after{
+    .time li:first-child::before{
         content: 'Now';
         color: white;
         position: absolute;
@@ -143,7 +123,53 @@ const Box = styled.div`
         right: 105px;
     }
 
-    
+    /* Indicatori  */
+    .time li::after {
+        content: '';
+        width: 20px;
+        height: 20px;
+        z-index: 2;
+        border-radius: 50%;
+        background-color: white;
+        position: absolute;
+        left: -37px;
+        margin-top: 10px;
+    }
+
+    .time li:first-child::after {
+        content: '';
+        width: 30px;
+        height: 30px;
+        z-index: 2;
+        border-radius: 50%;
+        background-color: white;
+        position: absolute;
+        left: -42px;
+        margin-top: 10px;
+    }
+
+
+    /* barra */
+    .time li:not(:first-child, :last-child)::before {
+        content: '';
+        height: 80px;
+        width: 8px;
+        background-color: rgba(255,255,255,0.3);
+        position: absolute;
+        left: -32px;
+        transform: translateY(10px);
+    }
+
+    .time li:last-child::before {
+        content: '';
+        height: 50px;
+        width: 8px;
+        background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0.3) 100%);
+        position: absolute;
+        left: -32px;
+        top: -32px;
+        transform: translateY(70px);
+    }
 `;
 
 export default Today;
