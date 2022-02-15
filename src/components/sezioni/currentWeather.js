@@ -22,12 +22,12 @@ const CurrentWeather = () => {
         return setCities.map((elm, index) => {
             if (index === 1) {
                 return (
-                    <Style key={index}>
+                    <Section key={index}>
                         <h2>{elm.currently.temp}°</h2>
                         <div className="image">
                             <img src={elm.currently.icon} alt={elm.weather} />
                         </div>
-                    </Style>
+                    </Section>
                 )
             }
         })
@@ -43,8 +43,8 @@ const CurrentWeather = () => {
 };
 
 
-/* STYLE */
-const Style = styled.div`
+/* Section */
+const Section = styled.div`
     display: flex;
     flex-direction: column;
     justify-content:center;

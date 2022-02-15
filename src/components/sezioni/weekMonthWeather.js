@@ -180,7 +180,7 @@ const Box = styled.div`
     justify-content:space-evenly;
     justify-items: center;
     transform: translateY(20px);
-    box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.45);
+    box-shadow: 10px 11px 14px -1px rgba(0,0,0,0.42);
 
 
     .point {

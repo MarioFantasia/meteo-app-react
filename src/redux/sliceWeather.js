@@ -35,7 +35,7 @@ Dalla prima chiamata ottengo latitudine e longitudine
 Nella seconda chiamata sfrutto i dati della prima per recuperare i dati
 */
 export function fetchCities() {
-    const query = ['olbia', 'torino', 'londra']; //saranno le prime tre citta ad essere visualizzate
+    const query = ['londra', 'torino', 'olbia']; //saranno le prime tre citta ad essere visualizzate
     
     return async dispatch => {
         query.forEach((elm, index) => {

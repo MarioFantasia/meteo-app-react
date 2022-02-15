@@ -11,14 +11,29 @@ const OtherCities = () => {
 
     //inizializzo array in cui inserire i dati settati
     const setCities = [];
+
+    //settaggio array. Valori modificati
     setObject(setCities, cities)
+
+    //funzione per il background;
+    const selectBackground = (weather) => {
+        switch (weather) {
+            case 'Clouds' || 'Snow':
+                return 'linear-gradient(to right, #4f576d, #5d677c, #6c788c, #7c899c, #8c9bac)';
+
+            case ('Thunderstorm' || 'Rain' || 'Drizzle'):
+                return 'linear-gradient(to right, #102b6c, #1e4082, #2b5598, #396baf, #4882c5)';
+
+            default: return 'linear-gradient(#5679E8, #6FA5EA)';
+        }
+    }
 
     //manipolazione dei dati
     const renderCities = () => {
         return setCities.map((city, index) => {
             if(!(city.live)) {
                 return (
-                    <City key={index}>
+                    <City key={index} style={{background: selectBackground(city.currently.weather)}}>
                         <div key={city.id} className="info">
                             <h3>{city.name}</h3>
                             <p>{city.unixTime.day} {city.unixTime.date}, {city.unixTime.month}</p>
@@ -87,7 +102,7 @@ const Section = styled.div`
 
 /* CITY */
 const City = styled.div`
-    width: 80%;
+    width: 79%;
     height: 150px;
     background-color: green;
     border-radius: 20px;
