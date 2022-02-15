@@ -185,10 +185,10 @@ export function getInfoMonth(arr) {
 
                 'weather' : {
                     'icon' : `http://openweathermap.org/img/wn/${arr[i].weather[0].icon}.png`,
-                    'temp' : `${parseInt(arr[i].temp.day)}°C`,
+                    'temp' : `${parseInt(arr[i].temp.day)}°`,
                     'description' : arr[i].weather[0].description,
-                    'tempMin' : `${parseInt(arr[i].temp.min)}°C`,
-                    'tempMax' : `${parseInt(arr[i].temp.max)}°C`,
+                    'tempMin' : `${parseInt(arr[i].temp.min)}°`,
+                    'tempMax' : `${parseInt(arr[i].temp.max)}°`,
                 },
 
                 'other' : {

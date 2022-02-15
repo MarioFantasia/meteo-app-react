@@ -31,7 +31,9 @@ const WeekWeather = () => {
                         <UnderStyles key={index}>
                             <h3>{day.time}</h3>
                             <h2>{day.temp}°</h2>
-                            <img src={day.icon} alt={elm.weather} />
+                            <div className="image">
+                                <img src={day.icon} alt={elm.weather} />
+                            </div>
                         </UnderStyles>
                         )
                 })
@@ -49,12 +51,14 @@ const WeekWeather = () => {
                         <MonthWeather key={index} >
                             <div className="box_sx">
                                 <h3>{day.time.day}, {day.time.date} {day.time.month}</h3>
-                                <img src={day.weather.icon} alt={elm.weather} />
+                                <div className="image">
+                                    <img src={day.weather.icon} alt={elm.weather} />
+                                </div>
                             </div>
                             <div className="box_dx">
                                 <h2>{day.weather.temp}</h2>
-                                <p>{day.weather.description}</p>
-                                <p>the high will be {day.weather.tempMax}, the low will be {day.weather.tempMin}</p>
+                                <p>{day.weather.description.replace(/^./, day.weather.description[0].toUpperCase())}</p>
+                                <p>The high will be {day.weather.tempMax}, the low will be {day.weather.tempMin}</p>
                                 <ul>
                                     <li>Humidity: {day.other.humidity}</li>
                                     <li>UV: {day.other.uv}</li>
@@ -69,17 +73,22 @@ const WeekWeather = () => {
         })
     }
 
-    /* funzioni per lo scroll orizzontale */
     const horizontalScroll = (e) => {
-        switch(e.target.id) {
-            case 'left':
-                return document.getElementById('slider').scrollLeft = 0;
-            case 'center':
-                return document.getElementById('slider').scrollLeft = 618;
-            case 'right':
-                return document.getElementById('slider').scrollLeft = 824.5;
-            default:
-                return 0
+        if (e.target.id === 'left') {
+            return document.getElementById('slider').scrollLeft = 0;
+
+        } else if (e.target.id === 'center') {
+            if(show) {
+                return document.getElementById('slider').scrollLeft = 645
+            } else {
+                return document.getElementById('slider').scrollLeft -= 645 
+            }
+        } else {
+            if(show) {
+                return document.getElementById('slider').scrollLeft = 1250
+            } else {
+                return document.getElementById('slider').scrollLeft += 645 
+            }
         }
     }
 
@@ -109,9 +118,9 @@ const WeekWeather = () => {
                     
                 </Slider>
                 <div className="point">
-                        <span id="left" onClick={horizontalScroll}>X</span>
-                        <span id="center" onClick={horizontalScroll}>X</span>
-                        <span id="right" onClick={horizontalScroll}>X</span>
+                    <span><i id="left" className="fa-solid fa-circle" onClick={horizontalScroll} ></i> </span>
+                    <span><i id="center" className="fa-solid fa-circle" onClick={horizontalScroll} ></i> </span>
+                    <span><i id="right" className="fa-solid fa-circle" onClick={horizontalScroll} ></i> </span>
                 </div>
             </Box>
         </Section>
@@ -133,9 +142,8 @@ const BoxSelectPeriod = styled.div`
     height: 100px;
     border-radius: 20px;
     display: flex;
-    justify-content: space-around;
     position: absolute;
-    top: 30px;
+    top: 10px;
     background-color: white;
 
 
@@ -157,10 +165,7 @@ const BoxSelectPeriod = styled.div`
 
     .gradient {
         background-color: #587DE8;
-    }
-
-    .white {
-        background-color: white;
+        color: white;
     }
 
 `;
@@ -175,11 +180,18 @@ const Box = styled.div`
     background: linear-gradient(#577ce8, #6ea7f1);
     display: flex;
     flex-direction: column;
-    justify-content:center;
+    justify-content:space-evenly;
     justify-items: center;
     transform: translateY(20px);
+
     .point {
         margin: 0 auto;
+        color: rgba(255, 255, 255, 0.5)
+    }
+
+    i:active {
+        background-color: white;
+        border-radius: 50%;
     }
 `;
 
@@ -191,7 +203,7 @@ const Slider = styled.div`
     width: 650px;
     border-radius: 20px;
     overflow-x: scroll;
-
+    padding-right: 5px;
     &::-webkit-scrollbar {
     display: none;
     }
@@ -201,7 +213,7 @@ const UnderStyles = styled.div `
     color: white;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     min-width: 155px; 
     height: 280px;
     border-radius: 20px;
@@ -210,6 +222,25 @@ const UnderStyles = styled.div `
     text-align:center;
     padding: 20px;
     margin: 0 30px;
+
+    h3 {
+        font-size: 20px;
+        margin: 0 auto;
+    }
+
+    h2 {
+        font-size: 40px;
+    }
+
+    .image {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto;
+    }
+    
+    img {
+        width: 100%;
+    }
 `;
 
 const MonthWeather = styled.div`
@@ -219,21 +250,45 @@ const MonthWeather = styled.div`
     background-color: blue;
     border-radius: 20px;
     display: flex;
+    padding: 30px;
 
     ul {
         list-style: none;
     }
 
-    div {
-        padding: 20px;
-    }
 
     .box_sx {
         width: 40%;
+        display: flex;
+        flex-direction: column;
     }
 
-    .box_sx {
+    h3 {
+        font-size: 20px;
+    }
+
+    .image {
+        width: 200px;
+        height: 200px;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    .box_dx {
         width: 60%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    h2, p {
+        margin-bottom: 15px;
+    }
+
+    h2 {
+        font-size: 30px;
+
     }
 `;
 

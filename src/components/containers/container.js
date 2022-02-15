@@ -24,7 +24,6 @@ const Container = styled.div`
         background-color: white;
     .container {
         display: flex;
-        overflow: hidden;
     }
 `;
 
