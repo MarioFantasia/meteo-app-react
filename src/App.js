@@ -4,6 +4,9 @@ import { fetchCities } from './redux/sliceWeather';
 
 import MainContainer from './components/containers/container';
 
+//React Bootstrap
+import  'bootstrap/dist/css/bootstrap.min.css' ;
+
 
 function App() {
   const dispatch = useDispatch()
