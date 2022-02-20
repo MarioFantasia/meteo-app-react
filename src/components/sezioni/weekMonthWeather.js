@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import { useSelector } from 'react-redux';
 import { citiesSelector }  from '../../redux/sliceWeather';
 import { setObject } from '../../redux/dataWeather'
+
+import {Container, Row, Col} from 'react-bootstrap';
 import styled from 'styled-components';
 
 
@@ -22,19 +24,17 @@ const WeekWeather = () => {
     setObject(setCities, cities)
 
     //manipolazione dei dati. Settimanali
-    console.log(setCities);
+
     const weekInfos = () => {
         return setCities.map((elm) => {
             if(elm.live) {
                 return elm.weekly.map((day, index) => {
                     return (
-                        <UnderStyles key={index}>
+                        <Col key={index} lg={3} className="weekWeather">
                             <h3>{day.time}</h3>
                             <h2>{day.temp}°</h2>
-                            <div className="image">
-                                <img src={day.icon} alt={elm.weather} />
-                            </div>
-                        </UnderStyles>
+                            <img src={day.icon} alt={elm.weather} />
+                        </Col>
                         )
                 })
             }
@@ -48,7 +48,7 @@ const WeekWeather = () => {
             if(elm.live) {
                 return elm.monthly.map((day, index) => {
                     return (
-                        <MonthWeather key={index} >
+                        <Col key={index} lg={12} className="monthWeather">
                             <div className="box_sx">
                                 <h3>{day.time.day}, {day.time.date} {day.time.month}</h3>
                                 <div className="image">
@@ -65,9 +65,8 @@ const WeekWeather = () => {
                                     <li>Dew point: {day.other.dew_point}</li>
                                 </ul>
                             </div>
-                        </MonthWeather>
-
-                        )
+                        </Col>
+                    )
                 })
             }
         })
@@ -95,206 +94,249 @@ const WeekWeather = () => {
 
     /* Cosa esporta il componente */
     return (
-        <Section>
-            <BoxSelectPeriod>
-                <div className="this_week">
-                    <h3 className={show ? 'gradient' : ''} onClick={() => setShow(true)}>
-                        This week
-                    </h3>
-                </div>
+        <Component >
+            <Container>
+                <Row className="boxSelectPeriod">
+                    <Col className="this_week">
+                        <h2 className={!show ?  'gradient' : '' } onClick={() => setShow(false)}>
+                            This week
+                        </h2>
+                    </Col>
 
-                <div className="this_month">
-                    <h3 className={show ? '' : 'gradient'} onClick={() => setShow(false)}>
-                        This month
-                    </h3>
-                </div>
-            </BoxSelectPeriod>
-
-            <Box>
-                <Slider id="slider">
-                    { show? (weekInfos()) : (monthInfos()) }
-                </Slider>
-                <div className="point">
-                    <span><i id="left" className="fa-solid fa-circle" onClick={horizontalScroll} ></i> </span>
-                    <span><i id="center" className="fa-solid fa-circle" onClick={horizontalScroll} ></i> </span>
-                    <span><i id="right" className="fa-solid fa-circle" onClick={horizontalScroll} ></i> </span>
-                </div>
-            </Box>
-        </Section>
+                    <Col className="this_month">
+                        <h2 className={show ? 'gradient' : '' } onClick={() => setShow(true)}>
+                            This month
+                        </h2>
+                    </Col>
+                </Row>
+            </Container>
+                
+            <Container className="boxContainer">
+                <Row className="slider" id="slider">
+                    { !show?  (weekInfos()) : (monthInfos()) }
+                </Row>
+                <Row>
+                    <Col className="point">
+                        <span><i id="left" className="fa-solid fa-circle" onClick={horizontalScroll} ></i> </span>
+                        <span><i id="center" className="fa-solid fa-circle" onClick={horizontalScroll} ></i> </span>
+                        <span><i id="right" className="fa-solid fa-circle" onClick={horizontalScroll} ></i> </span>
+                    </Col>
+                </Row>
+            </Container>
+        </Component>
     )
 
 };
 
-const Section =styled.div`
-    position:relative;
-    display: flex;
-    flex-direction:column;
-    justify-content: flex-end;
-`;
+const Component = styled.div`
 
-const BoxSelectPeriod = styled.div`
-    width: 70%;
-    height: 110px;
-    border-radius: 20px;
-    display: flex;
-    position: absolute;
-    top: 40px;
-    background-color: white;
-    box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.45);
+    .boxContainer {
+        background: linear-gradient(#5679E8, #72aff3);
+        box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.18);
 
+        border-radius: 25px;
+        border-top-left-radius: 0;
+    }
+
+    ul {
+        padding: 0;
+    }
+
+    .boxSelectPeriod {
+        width: calc(75% - 3px);
+        height: 77px;
+        background-color: white;
+        border-radius: 20px 20px 0 0;
+        box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.18);
+        margin-top: -16px;
+    }
 
 
     .this_week, .this_month {
-        width: 100%;
-        border-radius: 20px;
         border: none;
         text-align: center;
-        line-height: 50px;
-        background-color: white;
-
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
     }
 
-    h3 {
-        height:100px;
-        font-size: 30px;
+    .this_week h2, .this_month h2 {
+        font-size: 25px;
+        font-weight: 600;
+        height: 100%;
         border-radius: 20px 20px 0 0;
-        padding-top: 20px;
+        line-height: 61px;
+        margin-bottom: 0;
     }
 
     .gradient {
-        background-color: #5679E8;
+        background-color: #577DE0;
         color: white;
     }
 
-`;
-
-
-/* styled-components */
-const Box = styled.div`
-    width: 100%;
-    height: 380px;
-    margin-bottom: 20px;
-    border-radius: 20px;
-    background: linear-gradient(#5679E8, #72aff3);
-    display: flex;
-    flex-direction: column;
-    justify-content:space-evenly;
-    justify-items: center;
-    transform: translateY(20px);
-    box-shadow: 10px 11px 14px -1px rgba(0,0,0,0.42);
-
-
-    .point {
-        margin: 0 auto 10px auto;
-        color: rgba(255, 255, 255, 0.5);
-        display: inline;
+    //SLIDER
+    .slider {
+        color: white;
+        display: flex;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        flex-wrap: nowrap;
+        padding: 30px 13px 10px 13px;
     }
-
-    i:active {
-        background-color: white;
-        border-radius: 50%;
-    }
-`;
-
-
-const Slider = styled.div`
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    width: 650px;
-    height: 600px;
-    border-radius: 20px;
-    overflow-x: scroll;
-    padding: 25px 5px 0 0;
-    &::-webkit-scrollbar {
-    display: none;
-    }
-`;
-
-const UnderStyles = styled.div `
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    min-width: 155px; 
-    height: 300px;
-    border-radius: 20px;
-    background: linear-gradient(#5679E8, #72aff3);
-    box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.45);
-
-    text-align:center;
-    padding: 20px;
-    margin: 0 30px;
 
     h3 {
-        font-size: 20px;
-        margin: 0 auto;
+        font-size: 14px;
     }
 
-    h2 {
-        font-size: 40px;
+    .point {
+        color: rgba(255, 255, 255, 0.5);
+        display: inline;
+        text-align: center;
+        margin-bottom: 4px;
     }
 
-    .image {
-        width: 120px;
-        height: 120px;
-        margin: 0 auto;
+    .point i {
+        margin: 10px 5px;
+        font-size: 8px;
     }
+
+    .point i:active {
+        color: white;
+    }
+
+    /* componente info settimanale */
+    .weekWeather {
+        height: 300px;
+        width: calc((100%/3) - 28px);
+        color: white;
+        background: linear-gradient(#6b90eb, #79aaf1);
+        box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.18);
+        text-align:center;
+        margin: 0 14px;
+        border-radius: 20px;
+        padding-top: 20px;
     
-    img {
-        width: 100%;
-    }
-`;
-
-const MonthWeather = styled.div`
-    min-width: 90%;
-    margin: 0 33px;
-    height: 300px;
-    background: linear-gradient(#5679E8, #72aff3);
-    box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.45);
-    border-radius: 20px;
-    display: flex;
-    padding: 30px;
-
-    ul {
-        list-style: none;
     }
 
+    .weekWeather h3 {
+        font-size: 19px;
+    }
+
+    .weekWeather h2 {
+        margin: 40px 0;
+        font-size: 35px;
+        font-weight: 600
+    }
+
+    .weekWeather img {
+        transform: translateY(-35px)
+    }
+
+    /* Componente info mese */
+    .monthWeather {
+        height: 300px;
+        width: calc(100% - 28px);
+        background: linear-gradient(#6b90eb, #79aaf1);
+        box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.18);
+        border-radius: 20px;
+        display: flex;
+        margin: 0 14px;
+        padding: 20px;
+    }
 
     .box_sx {
-        width: 40%;
+        width: calc(( 100% / 12 ) * 5);
         display: flex;
         flex-direction: column;
     }
 
-    h3 {
-        font-size: 20px;
+    .box_sx h3 {
+        font-size: 18px;
     }
 
     .image {
-        width: 200px;
-        height: 200px;
+        margin: auto 0;
     }
 
     img {
         width: 100%;
+        transform: translateX(-18px);
     }
 
     .box_dx {
-        width: 60%;
+        width: calc(( 100% / 12 ) * 7);
+        padding:0;
         display: flex;
         flex-direction: column;
     }
 
     h2, p {
-        margin-bottom: 15px;
+        margin-bottom: 10px;
     }
 
     h2 {
-        font-size: 30px;
+        font-size: 23px;
+    }
+
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+        .weekWeather {
+            height: 300px;
+            width: calc((100%/3) - 5px);
+            color: white;
+            background: linear-gradient(#6b90eb, #79aaf1);
+            box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.18);
+            text-align:center;
+            margin: 0 4px;
+            border-radius: 20px;
+            padding-top: 20px;
+        }
+    }
+
+    @media screen and (max-width: 767px) {
+        background-color: transparent;
+        display: flex;
+        * {
+            box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.0);
+        }
+
+        .container:first-child {
+            display: none;
+        }
+
+        .container {
+            width: 100%;
+        }
+
+        .slider {
+            width: 750px;
+        }
+
+        .boxContainer {
+            background: transparent;
+            box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.0);
+        }
+
+        .weekWeather {
+            height: 300px;
+            width: calc(100%/5);
+            color: white;
+            box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.18);
+            text-align:center;
+            margin: 0 4px;
+            border-radius: 20px;
+            padding-top: 20px;
+            background: linear-gradient(#567AE8, #71AEF0);
+
+        }
+
+        .point {
+            display: none;
+        }
 
     }
+    
 `;
+
+
 
 /* /styled-components */
 
