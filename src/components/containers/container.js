@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import ContainerTop from './containerTop';
 import ContainerBtm from './containerBtm';
+import Footer from '../sezioni/footer';
 
 import {Container} from 'react-bootstrap';
 
@@ -15,6 +16,7 @@ const MainContainer = () => {
             <Container className="main" fluid="lg">
                 <ContainerTop />
                 <ContainerBtm />
+                <Footer className="footer" />
             </Container>
         </Component>
     )
