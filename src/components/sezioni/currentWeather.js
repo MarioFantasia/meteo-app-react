@@ -22,12 +22,10 @@ const CurrentWeather = () => {
         return setCities.map((elm, index) => {
             if (index === 1) {
                 return (
-                    <Section key={index}>
+                    <div className="box" key={index}>
                         <h2>{elm.currently.temp}°</h2>
-                        <div className="image">
-                            <img src={elm.currently.icon} alt={elm.weather} />
-                        </div>
-                    </Section>
+                        <img src={elm.currently.icon} alt={elm.weather} />
+                    </div>
                 )
             }
         })
@@ -35,44 +33,98 @@ const CurrentWeather = () => {
 
     /* Cosa esporta il componente */
     return (
-        <>
+        <Component>
             {current()}
-        </>
+        </Component>
 
     );
 };
 
 
-/* Section */
-const Section = styled.div`
+    const Component = styled.div`
     display: flex;
-    flex-direction: column;
-    justify-content:center;
-    width: 150px;
-    height: 250px;
-    border-radius: 0 20px 20px 0;
-    background: linear-gradient(#5679E8, #6FA5EA);
-    text-align:center;
-    position: absolute;
-    top: calc(230px - 125px);
-    left: -60px;
-    color: white;
-    padding-left: 20px;
-    box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.45);
     
-    h2 {
-        width: 120px;
-        font-size: 50px ;
-        margin-left: auto;
+    .box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 275px;
+        border-radius: 0 20px 20px 0;
+        background: linear-gradient(#5679E8, #6FA5EA);
+        text-align:center;
+        color: white;
+        box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.18);
+        transform:translate(-850px, 70px);
     }
 
-    .image {
-        display: flex;
-        justify-content: center;
+    h2 {
+        font-size: 50px;
+        font-weight: bold;
+        transform:translate(5px, 10px);
     }
 
     img {
-        width: 80%;
+        width: 130px;
+        transform:translate(-5px, 7px);
+    }
+
+
+    /* MEDIA QUERY */
+    @media screen and (min-width: 1200px) and (max-width: 1399px){
+        .box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 275px;
+            border-radius: 0 20px 20px 0;
+            background: linear-gradient(#5679E8, #6FA5EA);
+            text-align:center;
+            color: white;
+            box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.18);
+            transform:translate(-740px, 70px);
+        }
+    }
+
+    @media screen and (min-width: 992px) and (max-width: 1199px){
+        .box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 275px;
+            border-radius: 0 20px 20px 0;
+            background: linear-gradient(#5679E8, #6FA5EA);
+            text-align:center;
+            color: white;
+            box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.18);
+            transform:translate(-630px, 70px);
+            
+        }
+    }
+
+    @media screen and (max-width: 767px) {
+        .box {
+            display: flex;
+            border-radius: 0 20px 20px 0;
+            text-align:center;
+            color: white;
+            background: transparent;
+            box-shadow: none;
+            transform:translate(250px, 70px);
+            transform: rotate(90deg);
+            margin: 0 auto;
+        }
+
+            h2, img {
+                transform: rotate(-90deg);
+            }
+
+            h2 {
+                font-size: 80px;
+            }
+
+            img {
+                width: 200px;
+            }
     }
 `;
 export default CurrentWeather;
