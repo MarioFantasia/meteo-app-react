@@ -1,68 +1,67 @@
 import React from 'react';
 import styled from 'styled-components';
+import {Container, Row, Col} from 'react-bootstrap';
+
 
 const search = () => {
     return (
-        <Section>
-            <h2>Search</h2>
-            <Box >
-                <div className="search">
-                    <input type="text" placeholder="ex: Miami" />
-                    <button><i className="fa-solid fa-magnifying-glass"></i></button>
-                </div>
-            </Box >
-        </Section>
+        <Component>
+            <Container>
+                <Row>
+                    <Col >
+                        <h2>Search</h2>
+                    </Col >
+                    <Col lg={12} className="search" >
+                        <input type="text" placeholder="ex: Miami" />
+                        <button><i className="fa-solid fa-magnifying-glass"></i></button>
+                    </Col>
+                </Row>
+            </Container>
+        </Component>
     );
 };
 
-/* section */
-const Section = styled.div`
+
+
+/* STYLE */
+const Component = styled.div`
+
     h2 {
-        padding-left: 48px;
-        font-size: 30px;
-        margin: 0 20px 18px 20px;
+        margin-bottom: 28px;
+        font-size: 25px;
+        font-weight: 700;
         display: flex;
     }
 
-`;
-
-/* Box  */
-const Box = styled.div`
-    width: 79%;
-    margin: 0 auto;
-    background-color: white;
-    border-radius: 20px;
-    box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.45);
-
-
     .search {
+
+        background-color: white;
+        box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.18);
+
         border: 1px solid;
         border-radius: 20px;
         display: flex;
-        margin: 17px auto;
         overflow: hidden;
         border:none;
+        justify-content: space-between;
     }
 
     input {
-        width: 75%;
-        margin: 0 auto;
-        height: 150px;
+
+        padding-left: 28px;
         border:none;
-        font-size: 40px;
     }
 
     input::placeholder {
-        color: lightgrey;
-        font-size: 30px;
-        padding-left: 20px;
-        font-weight: 600;
         font-family: 'Poppins', sans-serif;
+        color: #B8B8B8;
+        font-size: 25px;
+        font-weight: 600;
     }
 
     button{
-        height: 150px;
-        width: 60px;
+        height: 140px;
+        width: 45px;
         border-radius: 20px;
         border: none;
         background: linear-gradient(#577ce8, #6ea7f1);
@@ -74,12 +73,16 @@ const Box = styled.div`
 
     .fa-magnifying-glass { 
         color:white;
-        font-size: 25px;
+        font-size: 18px;
     }
 
+    @media screen and (min-width: 768px) and (max-width: 992px) {
+        width: calc((100%/ 12) * 6 - 20px);
+        
+        .container {
+            flex-direction: column;
+        }
+    }
 `;
-
-
-
 
 export default search;
