@@ -171,6 +171,7 @@ const BoxSelectPeriod = styled.div`
 
 /* styled-components */
 const Box = styled.div`
+    width: 100%;
     height: 380px;
     margin-bottom: 20px;
     border-radius: 20px;
@@ -294,9 +295,6 @@ const MonthWeather = styled.div`
 
     }
 `;
-
-
-
 
 /* /styled-components */
 

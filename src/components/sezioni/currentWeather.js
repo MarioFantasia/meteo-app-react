@@ -48,14 +48,14 @@ const Section = styled.div`
     display: flex;
     flex-direction: column;
     justify-content:center;
-    width: 170px;
+    width: 150px;
     height: 250px;
-    border-radius: 20px;
+    border-radius: 0 20px 20px 0;
     background: linear-gradient(#5679E8, #6FA5EA);
     text-align:center;
     position: absolute;
     top: calc(230px - 125px);
-    left: -90px;
+    left: -60px;
     color: white;
     padding-left: 20px;
     box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.45);
@@ -68,7 +68,7 @@ const Section = styled.div`
 
     .image {
         display: flex;
-        justify-content: flex-end;
+        justify-content: center;
     }
 
     img {

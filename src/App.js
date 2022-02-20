@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchCities } from './redux/sliceWeather';
-
 import MainContainer from './components/containers/container';
 
 //React Bootstrap

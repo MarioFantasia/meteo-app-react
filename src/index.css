@@ -11,6 +11,7 @@ body {
 /*     padding: 20px; */
   font-family: 'Poppins', sans-serif;
   overflow-y: scroll;
+  width: 100vw;
 
 }
 
@@ -18,10 +19,7 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-.App {
-  display: flex;
-  width: 100%;
-}
+
 
 ul {
   list-style: none;
