@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { citiesSelector }  from '../../redux/sliceWeather';
 import { setObject } from '../../redux/dataWeather'
 
+import {Container, Row, Col} from 'react-bootstrap';
 import styled from 'styled-components';
 
 const Today = () => {
@@ -19,8 +20,14 @@ const Today = () => {
     const todayTemp = () => {
         return setCities.map((elm) => {
             if(elm.live) {
-                return elm.hourly.map((dato, index) => {
-                    return <li key={index} >{dato.temp}°</li>
+                return elm.hourly.map((hourly, index) => {
+                    if(index > 0) {
+                        return <li>{hourly.temp}°</li>
+                    } else {
+                        return (
+                            <li key={index}><br/>{hourly.temp}°</li>
+                        )
+                    }
                 })
             }
         })
@@ -30,11 +37,11 @@ const Today = () => {
     const todayHour = () => {
         return setCities.map((elm) => {
             if(elm.live) {
-                return elm.hourly.map((dato, index) => {
+                return elm.hourly.map((hourly, index) => {
                     if (index > 0 ) {
-                        return <li  key={index} >{dato.time} {dato.morning ? 'a.m.' : 'p.m.'}</li>
+                        return <li>{hourly.time} {hourly.morning ? 'a.m.' : 'p.m.'}</li>
                     } else {
-                        return <li key={index}></li>
+                        return <li key={index}><br /><br/></li>
                     }
                 })
             }
@@ -43,143 +50,332 @@ const Today = () => {
 
     /* Cosa esporta il componente */
     return (
-        <Section>
-            <h2>Today</h2>
-            <Box>
-                <div className="timeline">
-                    <ul className="temperature">
-                        {todayTemp()}
-                    </ul>
+        <Component>
+            <Container >
+                <Row>
+                    <Col>
+                        <h2>Today</h2>
+                    </Col>
+                </Row>
+                <Row className="timeline">
+                    <Col >
+                        <ul className="temperature">
+                            {todayTemp()}
+                        </ul>
+                    </Col>
 
-                    <ul className="time">
-                        {todayHour()}
-                    </ul>
-                </div>
-            </Box>
-        </Section>
+                    <Col >
+                        <ul className="time">
+                            {todayHour()}
+                        </ul>
+                    </Col>
+                </Row>
+            </Container>
+        </Component>
     );
 };
 
-
-
-/* Section */
-const Section = styled.div`
+const Component = styled.div`
     display: flex;
-    height: 500px;
-    width: 30%;
-    flex-direction: column;
-    padding-top: 5px;
-    
-    h2 {
-        width: 30%;
-        font-size: 30px;
-        margin: 0 20px 25px 20px;
-        padding-top: 45px;
-    }
-`;
-
-/* Box */
-const Box = styled.div`
-    color: white;
-    width: 100%;
-    height: 380px;
-    padding: 70px 20px;
-    border-radius: 20px;
-    background: linear-gradient(#5679E8, #6FA5EA);
-    text-align:center;
-    overflow-y: scroll;
-    display: flex;
-    justify-content: space-between;
-    box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.45);
-
 
     &::-webkit-scrollbar {
     display: none;
     }
+    
 
-    .timeline {
-        display: flex;
-        width: 100%;
-        justify-content: space-between;
+    h2 {
+        margin-bottom: 28px;
+        font-size: 25px;
+        font-weight: 700;
     }
 
+    .timeline {
+        color: white;
+        height: 375px;
+        width: calc(100% - 45px);
+        border-radius: 25px;
+        background: linear-gradient(#5679E8, #6FA5EA);
+        box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.18);
+        overflow-y: scroll;
+        padding: 15px 0 0 0;
+        display: flex;
+    }
 
-    .temperature, .time {
-        width: 40%;
+    .time {
+        padding: 0;
         position: relative;
     }
 
+    .time, .temperature {
+        width: 100%;
+    }
+
+
     li {
-        height: 40px;
-        font-size: 30px;
-        margin-bottom: 35px;
-    }
-    
-    .time li {
-        font-size: 20px;
-        line-height: 45px;
+        padding: 0;
+        text-align: center;
     }
 
-    .temperature li:first-child {
-        font-size: 35px;
+    li:first-child {
+        font-size: 32px;
         font-weight: bold;
+        margin-bottom: 30px;
     }
 
-    /* posizionamento 'now' */
+    .temperature li:not(:first-child) {
+        font-size: 25px;
+        color: rgba(255,255,255,0.8);
+        margin-bottom: 29px;
+    }
+
+    .time li:not(:first-child) {
+        font-size: 20px;
+        color: rgba(255,255,255,0.8);
+        margin-bottom: 37px;
+    }
+
+    /* NOW */
     .time li:first-child::before{
         content: 'Now';
         color: white;
+        font-size: 20px;
+        font-weight: bold;
         position: absolute;
-        top: -30px;
-        right: 105px;
+        top: 25px;
+        transform: translate(-98px, 2px);
     }
 
-    /* Indicatori  */
-    .time li::after {
-        content: '';
-        width: 20px;
-        height: 20px;
-        z-index: 2;
-        border-radius: 50%;
-        background-color: white;
-        position: absolute;
-        left: -37px;
-        margin-top: 10px;
-    }
+    /* INDICATORI */
 
+    //indicatore live
     .time li:first-child::after {
         content: '';
-        width: 30px;
-        height: 30px;
+        width: 25px;
+        height: 25px;
         z-index: 2;
         border-radius: 50%;
         background-color: white;
         position: absolute;
-        left: -42px;
-        margin-top: 10px;
+        transform: translateY(-30px);
+        left: -18px;
     }
 
-
-    /* barra */
-    .time li:not(:first-child, :last-child)::before {
+    //indicatori successvi
+    .time li::after {
         content: '';
-        height: 80px;
-        width: 8px;
-        background-color: rgba(255,255,255,0.3);
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background-color: white;
         position: absolute;
-        left: -32px;
-        transform: translateY(10px);
+        left: -13px;
+        transform: translateY(8px);
     }
 
+    //barra live
     .time li:last-child::before {
         content: '';
         height: 50px;
         width: 8px;
-        background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0.3) 100%);
+
+        background-color: white;
         position: absolute;
-        left: -32px;
-        top: -32px;
-        transform: translateY(70px);
+        left: -9px;
+        top: 35px;
+        transform: translateY(50px);
+    }
+
+    //barre successve
+    .time li:not(:first-child, :last-child)::before {
+        content: '';
+        height: 55px;
+        width: 8px;
+        background-color: rgba(255,255,255,0.5);
+        position: absolute;
+        left: -9px;
+        transform: translateY(20px);
+    }
+    /* /indicatori bianchi */
+
+     /* MEDIA QUERY */
+    // 992 -> 1200
+    /* MEDIA QUERY */
+    @media screen and (min-width: 1200px) and (max-width: 1399px){
+        /* NOW */
+        .time li:first-child::before{
+            content: 'Now';
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            position: absolute;
+            top: 25px;
+            transform: translate(-88px, 2px);
+        }
+    }
+
+    @media screen and (max-width:1199px) and (min-width:993px) {
+        /* NOW */
+        .time li:first-child::before{
+            content: 'Now';
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            position: absolute;
+            top: 25px;
+            transform: translate(-76px, 2px);
+        }
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 992px) {
+        /* NOW */
+        .time li:first-child::before{
+            content: 'Now';
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            position: absolute;
+            top: 25px;
+            transform: translate(-95px, 2px);
+        }
+    }
+
+    @media screen and (max-width: 767px) {
+        justify-content: center;
+        .container {
+            max-width: 100%;
+        }
+
+        .row:first-child {
+            display: none;
+        }
+
+        .timeline {
+            color: white;
+            width: 100%;
+            height: 150px;
+            border-radius: 0;
+            background: transparent;
+            box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.0);
+            overflow-x: scroll;
+            overflow-y: hidden;
+            padding:  50px 30px;
+            display: flex;
+            position: relative;
+        }
+        
+        .timeline .col:first-child {
+            order: 2;
+        }
+
+        .timeline .col:last-child {
+            order: 1;
+        }
+
+        .time, .temperature {
+            display: flex;
+            width: 1900px;
+            margin-bottom: 18px;
+            justify-content: space-between;
+        }
+
+        .time {
+            padding-left: 40px;
+        }
+
+        .temperature li {
+            width: 45px
+        }
+
+        li:first-child {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+
+        li br {
+            display: none;
+        }
+
+        .temperature li:not(:first-child) {
+            font-size: 20px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 25px;
+        }
+
+        .time li:not(:first-child) {
+            font-size: 15px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 25px;
+        }
+
+        /* NOW */
+        .temperature li:first-child::before{
+            content: 'Now';
+            font-size: 20px;
+            font-weight: bold;
+            position: absolute;
+            top: 25px;
+            transform: translate(-17px, 20px);
+        }
+
+        /* INDICATORI */
+
+        //indicatore live
+        .temperature li:first-child::after {
+            content: '';
+            width: 25px;
+            height: 25px;
+            z-index: 2;
+            border-radius: 50%;
+            position: absolute;
+            transform: translate(-13px, -35px);
+            left: 41px;
+        }
+        
+        //indicatori successvi
+        .temperature li::after {
+            content: '';
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: white;
+            position: absolute;
+            transform: translate(-22px, -30px);
+        }
+
+        //barra live
+        .time li:last-child::before {
+            content: '';
+            height: 8px;
+            width: 85px;
+            background-color: white;
+            position: absolute;
+            transform: translate(20px, 5px);
+            
+        }
+
+        //barre successve
+        .temperature li:not(:first-child, :last-child)::before {
+            content: '';
+            height: 8px;
+            width: 78px;
+            background-color: rgba(255,255,255,0.5);
+            position: absolute;
+            transform: translate(14px, -25px);
+            
+        }
+        
+        //cambio ' .time.li. a .temperature.li ' Rendo dispaly none i precedenti '.time'
+        // tengo solo .time li:last-child::before
+        
+        .time li:first-child::before,
+        .time li:first-child::after,
+        .time li::after,
+        .time li:not(:first-child, :last-child)::before {
+            display: none;
+
+        }
+
     }
 `;
 
