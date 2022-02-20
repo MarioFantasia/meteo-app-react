@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { citiesSelector }  from '../../redux/sliceWeather';
 import { setObject } from '../../redux/dataWeather'
 
+import {Container, Row, Col} from 'react-bootstrap';
 import styled from 'styled-components';
 
 const OtherCities = () => {
@@ -33,118 +34,163 @@ const OtherCities = () => {
         return setCities.map((city, index) => {
             if(!(city.live)) {
                 return (
-                    <City key={index} style={{background: selectBackground(city.currently.weather)}}>
-                        <div key={city.id} className="info">
-                            <h3>{city.name}</h3>
+                    <Col lg={12} key={index} className="city" style={{background: selectBackground(city.currently.weather)}}>
+                        <div className="info">
+                            <h5>{city.name}</h5>
                             <p>{city.unixTime.day} {city.unixTime.date}, {city.unixTime.month}</p>
-                            <small>{city.unixTime.hour}:{city.unixTime.min}.</small>
+                            <h6>{city.unixTime.hour}:{city.unixTime.min}.</h6>
                         </div>
                         <div className="image">
                             <img src={city.currently.icon} alt={city.weather} />
                         </div>
                         <h2>{city.currently.temp}°</h2>
-                    </City>
+                    </Col>
                 )
             }
-        }
-        )
+        })
     }
 
     /* Cosa esporta il componente */
     return (
-        <Section>
-            <div className="add_city">
-                <div className="icon">
-                    <i className="fa-solid fa-plus"></i>
-                </div>
-                <h3>Aggiungi città</h3>
-            </div>
-            {renderCities()}
-        </Section>
+        <Component>
+            <Container fluid>
+                <Row>
+                    <Col>
+                        <div className="add_city">
+                            <div className="icon">
+                                <i className="fa-solid fa-plus"></i>
+                            </div>
+                            <h3>Aggiungi città</h3>
+                        </div>
+                    </Col>
+                </Row>
+                <Row>
+                    {renderCities()}
+                </Row>
+            </Container>
+        </Component>
     );
 };
 
 
 
-/* STILE COMPONENTI */
-
-/* SECTION */
-const Section = styled.div`
+/* STYLE */
+const Component = styled.div`
     display: flex;
-    height: 460px;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
 
 
+
     .add_city {
-        width: 80%;
-        line-height:110px;
-        text-align: center;
+        margin-bottom: 19px
+    }
+
+    .city:not(:last-child) {
+        margin-bottom: 30px
+    }
+
+    .add_city {
         display: flex;
         justify-content: center;
+        height: 100px;
+    }
+
+    .add_city h3 {
+        font-size: 20px;
+        font-weight: 700;
+        color: #2d3f7a;
+        margin: auto 0;
     }
 
     .icon {
-        width: 25px;
-        height: 25px;
-        border: 3px solid;
-        margin: auto 10px;
-        display: flex;
-        border-radius: 5px
+        padding: 1px 5px;
+        border: 2px solid;
+        margin: auto 10px auto 0;
+        border-radius: 7px;
+        font-size: 12px;
     }
 
-    i {
-        display: inline-block;
-        margin: auto;
-    }
-`;
 
-/* CITY */
-const City = styled.div`
-    width: 79%;
-    height: 150px;
-    background-color: green;
-    border-radius: 20px;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.45);
-
-
-    h3 {
-        font-size: 25px;
-    }
-
-    .info, .image, h2 {
-        display: flex;
-        width: calc(100%/3);
-    }
-
-    .info, h2 {
+    //renderCities
+    .city {
         padding: 20px;
+        border-radius: 20px;
+        height: 140px;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.18);
+        }
+
+    .info, img, h2 {
+        display: flex;
+        width: calc((100%/12)*3);
     }
 
     .info {
-        flex-direction: column;
-    }
-
-    small {
-        margin-top: 5px;
-        font-weight: 200;
-    }
-
-    img {
         width: 100%;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    h5 {
+        font-size: 25px;
+    }
+
+    p {
+        padding-right: 16px;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    h6 {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.8);
     }
 
     h2 {
         text-align: center;
-        line-height: 130px; //150px 'altezza h2' - 20px 'padding di h2'
-        font-size: 60px;
+        font-size: 50px;
+        font-weight: 700;
+        align-items: center;
+        display: flex;
+        justify-content: center;
     }
 
+    .image {
+        width: 100%;
+    }
+
+    img {
+        width: 130px;
+        position : absolute;
+        transform: translate( -22px, -15px);
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 992px) {
+        .row {
+            justify-content: space-around;
+            
+        }
+
+        .city {
+            width: calc((100%/ 12) * 6 - 20px);
+        }
+
+        .city:not(:last-child) {
+            margin: 0;
+        }
+    }
     
+    @media screen and (max-width: 767px) {
+        height: 200px;
+        
+        .city {
+
+        }
+    }
 `; 
 
 export default OtherCities;
