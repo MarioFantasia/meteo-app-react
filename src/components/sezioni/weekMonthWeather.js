@@ -141,6 +141,7 @@ const WeekWeather = () => {
 };
 
 const Component = styled.div`
+        position: relative;
 
     .boxSelectPeriod {
         display: flex;
@@ -179,6 +180,7 @@ const Component = styled.div`
         border-radius: 25px;
         border-top-left-radius: 0;
         overflow-y: hidden;
+        padding-bottom: 32px;
     }
 
     //SLIDER
@@ -271,10 +273,10 @@ const Component = styled.div`
     // punti slider
     .point {
         color: rgba(255, 255, 255, 0.5);
-        display: inline;
-        text-align: center;
         margin-left: 250px;
-        height: 20px;
+        position: absolute;
+        bottom: 0;
+
     }
 
     .point i {
@@ -344,10 +346,6 @@ const Component = styled.div`
             border-radius: 20px;
             padding-top: 20px;
             background: linear-gradient(#567AE8, #71AEF0);
-        }
-
-        .monthWeather {
-            //display: none;
         }
 
         .point {
