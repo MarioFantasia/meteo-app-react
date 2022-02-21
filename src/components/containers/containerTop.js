@@ -1,6 +1,9 @@
 import React from 'react';
+
+//componenti
 import CurrentCity from '../sezioni/currentCity';
 import OtherCities from '../sezioni/otherCities';
+
 import styled from 'styled-components';
 import {Row, Col} from 'react-bootstrap';
 
@@ -24,6 +27,7 @@ const ContainerTop = () => {
     )
 };
 
+//STYLE
 const Component = styled.div`
     margin-bottom: 50px;
 
@@ -44,15 +48,17 @@ const Component = styled.div`
         display: none;
     }
 
+
+
+
      /* MEDIA QUERY */
-    
     @media screen and (min-width: 992px) and (max-width: 1199px) {
         .right {
             padding: 0 10px 0 15px;
         }
     }
 
-    @media screen and (min-width: 768px) and (max-width: 992px) {
+    @media screen and (min-width: 768px) and (max-width: 991px) {
         .right {
             padding: 0;
         }

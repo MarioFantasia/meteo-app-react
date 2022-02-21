@@ -1,8 +1,11 @@
 import React from 'react';
+
+//componenti
 import Search from '../sezioni/search';
 import Localization from '../sezioni/localization';
 import Today from '../sezioni/today';
 import WeekWeather from '../sezioni/weekMonthWeather';
+
 import styled from 'styled-components';
 import {Row, Col} from 'react-bootstrap';
 
@@ -28,6 +31,7 @@ const ContainerBtm = () => {
     )
 };
 
+/* STYLE */
 const Component = styled.div`
     *{  
         margin: 0;
@@ -38,13 +42,19 @@ const Component = styled.div`
         justify-content:  center;
     }
 
+    .today {
+        display: flex;
+        flex-direction: column;
+    }
 
     .searchAndLocalization {
         padding: 0 10px 0 50px;
     }
 
+
+
+
     /* MEDIA QUERY */
-    // 992 -> 1200
     @media screen and (min-width: 992px) and (max-width: 1199px) {
 
         .searchAndLocalization {
@@ -52,7 +62,7 @@ const Component = styled.div`
         }
     }
 
-    @media screen and (min-width: 768px) and (max-width: 992px) {
+    @media screen and (min-width: 768px) and (max-width: 991px) {
         .searchAndLocalization {
             padding: 0;
             display: flex;

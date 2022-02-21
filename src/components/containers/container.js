@@ -1,12 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
-
-
+/* Componenti */
 import ContainerTop from './containerTop';
 import ContainerBtm from './containerBtm';
 import Footer from '../sezioni/footer';
 
+import styled from 'styled-components';
 import {Container} from 'react-bootstrap';
+
+
 
 
 const MainContainer = () => {
@@ -16,12 +17,13 @@ const MainContainer = () => {
             <Container className="main" fluid="lg">
                 <ContainerTop />
                 <ContainerBtm />
-                <Footer className="footer" />
+                <Footer />
             </Container>
         </Component>
     )
 };
 
+//STYLE
 const Component = styled.div`
     
     display: flex;
@@ -34,8 +36,8 @@ const Component = styled.div`
         margin: 0 auto;
     }
 
-
-    @media screen and (min-width: 768px) and (max-width: 992px){
+//MEDIA QUERY
+    @media screen and (min-width: 768px) and (max-width: 991px){
         padding: 10px;
 
     }
