@@ -10,7 +10,7 @@ const Footer = () => {
                 <Row>
                     <Col sm={12} className="icons_box">
                         <div>
-                            <i class="fa-solid fa-house"></i>
+                            <i className="fa-solid fa-house"></i>
                         </div>
                         
                         <div>

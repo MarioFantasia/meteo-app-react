@@ -28,7 +28,7 @@ const CurrentCity = () => {
                     return (
                         <div className="city" key={index}>
                             <div className="smartIcons">
-                                <span><i class="fa-solid fa-arrow-left"></i></span>
+                                <span><i className="fa-solid fa-arrow-left"></i></span>
                                 <span><i className="fa-solid fa-plus"></i></span>
                             </div>
                             

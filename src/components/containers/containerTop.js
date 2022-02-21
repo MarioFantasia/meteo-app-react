@@ -83,9 +83,9 @@ const Component = styled.div`
         }
 
         .hello{
-            display: none;
+            //display: none;
             height: 50px;
-            //display: inline-block;
+            display: inline-block;
             text-align: center;
             margin: 0 auto;
         }

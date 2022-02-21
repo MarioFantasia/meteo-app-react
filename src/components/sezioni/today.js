@@ -21,7 +21,7 @@ const Today = () => {
             if(elm.live) {
                 return elm.hourly.map((hourly, index) => {
                     if(index > 0) {
-                        return <li>{hourly.temp}°</li>
+                        return <li key={index}>{hourly.temp}°</li>
                     } else {
                         return (
                             <li key={index}><br/>{hourly.temp}°</li>
@@ -38,7 +38,7 @@ const Today = () => {
             if(elm.live) {
                 return elm.hourly.map((hourly, index) => {
                     if (index > 0 ) {
-                        return <li>{hourly.time} {hourly.morning ? 'a.m.' : 'p.m.'}</li>
+                        return <li key={index}>{hourly.time} {hourly.morning ? 'a.m.' : 'p.m.'}</li>
                     } else {
                         return <li key={index}><br /><br/></li>
                     }
