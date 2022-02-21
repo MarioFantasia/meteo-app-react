@@ -1,10 +1,13 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
+import citiesReducer from './sliceWeather';
+import screenReducer from './sliceScreen';
 
-import citiesReducer from './sliceWeather'
 
 /* raggruppo tutti i reducers */
 const rootReducer = combineReducers({
-    cities : citiesReducer
+    cities : citiesReducer,
+    screen: screenReducer
+
 })
 
 export default rootReducer

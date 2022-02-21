@@ -7,10 +7,8 @@ import styled from 'styled-components';
 //componente
 import CurrentWeather from './currentWeather';
 
-
-
-
 const CurrentCity = () => {
+    
     //richiamo i dati con useSelector. Valori API
     const {cities} = useSelector(citiesSelector);
 

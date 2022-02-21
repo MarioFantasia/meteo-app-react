@@ -26,6 +26,7 @@ export const { getCitiesSuccess } = citiesSlice.actions
 
 export const citiesSelector = state => state.cities;
 
+
 export default citiesSlice.reducer
 
 

@@ -1,4 +1,5 @@
 import React from 'react';
+
 /* Componenti */
 import ContainerTop from './containerTop';
 import ContainerBtm from './containerBtm';
@@ -11,12 +12,15 @@ import {Container} from 'react-bootstrap';
 
 
 const MainContainer = () => {
+    
+
+
 
     return (
-        <Component>
+        <Component style>
             <Container className="main" fluid="lg">
                 <ContainerTop />
-                <ContainerBtm />
+                <ContainerBtm/>
                 <Footer />
             </Container>
         </Component>

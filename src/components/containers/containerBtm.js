@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import { useSelector } from 'react-redux';
+import { screenSelector }  from '../../redux/sliceScreen';
 import Search from '../sezioni/search';
 import Localization from '../sezioni/localization';
 import Today from '../sezioni/today';
@@ -7,9 +9,38 @@ import styled from 'styled-components';
 import {Row, Col} from 'react-bootstrap';
 
 
+
 const ContainerBtm = () => {
+    const {screen} = useSelector(screenSelector);
+    const [size, setSize] = useState(window.innerWidth);
+    const [display, setDisplay] = useState('')
+
+    
+    const dimensionSize = () => {
+        setSize(window.innerWidth);
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', dimensionSize)
+        if(size<768) {
+            if(screen) {
+                setDisplay(true)
+            } else {
+                setDisplay(false)
+            }
+        } else {
+            setDisplay('')
+        }
+
+        return () => {
+            window.removeEventListener('resize', dimensionSize);
+        }
+    });
+
+    console.log(display);
+
     return (
-        <Component>
+        <Component style={(display && size<768) ? {} : {display: 'none'}}>
             <Row className="containerBottom">
                 <Col sm={12} md={4} lg={3} className="today">
                     <Today />
@@ -70,7 +101,7 @@ const Component = styled.div`
     }
 
     @media screen and (max-width:767px){
-        display: none;
+        //display: none;
 
         .searchAndLocalization {
             display: none;
