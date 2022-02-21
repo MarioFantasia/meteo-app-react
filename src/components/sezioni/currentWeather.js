@@ -43,7 +43,6 @@ const CurrentWeather = () => {
 
     const Component = styled.div`
     display: flex;
-    
     .box {
         display: flex;
         flex-direction: column;
@@ -54,52 +53,62 @@ const CurrentWeather = () => {
         text-align:center;
         color: white;
         box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.18);
-        transform:translate(-850px, 70px);
+        position: absolute;
+        top: 75px;
+        left: -50px;
     }
 
     h2 {
         font-size: 50px;
         font-weight: bold;
-        transform:translate(5px, 10px);
     }
 
     img {
         width: 130px;
-        transform:translate(-5px, 7px);
     }
 
 
     /* MEDIA QUERY */
-    @media screen and (min-width: 1200px) and (max-width: 1399px){
-        .box {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            height: 275px;
-            border-radius: 0 20px 20px 0;
-            background: linear-gradient(#5679E8, #6FA5EA);
-            text-align:center;
-            color: white;
-            box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.18);
-            transform:translate(-740px, 70px);
-        }
-    }
+
 
     @media screen and (min-width: 992px) and (max-width: 1199px){
         .box {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            height: 275px;
             border-radius: 0 20px 20px 0;
             background: linear-gradient(#5679E8, #6FA5EA);
             text-align:center;
             color: white;
             box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.18);
-            transform:translate(-630px, 70px);
-            
         }
     }
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+        justify-content: center;
+
+        .box {
+            height: 180px;
+            position: inherit;
+            display: flex;
+            flex-direction: row;
+            background: transparent;
+            box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.0);
+        }
+
+        h2 {
+            font-size: 50px;
+            font-weight: bold;
+            order: 2;
+            display: flex;
+            margin: auto 0;
+        }
+
+        img {
+            width: 180px;
+        }
+    }
+
 
     @media screen and (max-width: 767px) {
         .box {
@@ -114,17 +123,17 @@ const CurrentWeather = () => {
             margin: 0 auto;
         }
 
-            h2, img {
-                transform: rotate(-90deg);
-            }
+        h2, img {
+            transform: rotate(-90deg);
+        }
 
-            h2 {
-                font-size: 80px;
-            }
+        h2 {
+            font-size: 80px;
+        }
 
-            img {
-                width: 200px;
-            }
+        img {
+            width: 200px;
+        }
     }
 `;
 export default CurrentWeather;

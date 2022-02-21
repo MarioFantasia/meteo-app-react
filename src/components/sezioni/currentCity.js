@@ -4,10 +4,9 @@ import { citiesSelector }  from '../../redux/sliceWeather';
 import { setObject } from '../../redux/dataWeather';
 import styled from 'styled-components';
 
+//componente
 import CurrentWeather from './currentWeather';
 
-
-import {Container, Row, Col} from 'react-bootstrap';
 
 
 
@@ -45,16 +44,8 @@ const CurrentCity = () => {
     /* Cosa esporta il componente */
     return (
         <Component>
-            <Container fluid>
-                <Row>
-                    <Col >
-                        {renderCities()}
-                    </Col>
-                    <Col lg={1} xl={1} >
-                        <CurrentWeather className="currentWeather"/>
-                    </Col>
-                </Row>
-            </Container>
+            {renderCities()}
+            <CurrentWeather className="currentWeather" />
         </Component>
     );
 };
@@ -65,6 +56,7 @@ const Component = styled.div`
     border-radius: 20px;
     box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.18);
     display: flex;
+    position: relative;
 
     .smartIcons {
         display: none;
@@ -75,7 +67,9 @@ const Component = styled.div`
         color: #01175F;
         display: flex;
         flex-direction: column;
-        transform:translate(125px, 72px);
+        position: absolute;
+        top: 78px;
+        left: 137px;
     }
 
     .city h2 {
@@ -94,23 +88,21 @@ const Component = styled.div`
         font-weight: 400;
     }
 
-
-    @media screen and (min-width: 768px) and (max-width: 992px) {
-        height: 380px;
+    @media screen and (min-width: 768px) and (max-width: 991px) {
         background: linear-gradient(#5679E8, #6FA5EA);
         border-radius: 20px;
         box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.18);
         display: flex;
-        flex-wrap: wrap;
-        
+        flex-direction: column;
+        justify-content: space-evenly;
 
         .city {
             width: 400px;
             color: white;
             display: flex;
             text-align: center;
+            position: initial;
             margin: 0 auto;
-            transform: translateY(40px);
         }
 
         .city h2 {

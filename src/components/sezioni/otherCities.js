@@ -34,7 +34,7 @@ const OtherCities = () => {
         return setCities.map((city, index) => {
             if(!(city.live)) {
                 return (
-                    <Col lg={12} key={index} className="city" style={{background: selectBackground(city.currently.weather)}}>
+                    <div key={index} className="city" style={{background: selectBackground(city.currently.weather)}}>
                         <div className="info">
                             <h5>{city.name}</h5>
                             <p>{city.unixTime.day} {city.unixTime.date}, {city.unixTime.month}</p>
@@ -44,7 +44,7 @@ const OtherCities = () => {
                             <img src={city.currently.icon} alt={city.weather} />
                         </div>
                         <h2>{city.currently.temp}°</h2>
-                    </Col>
+                    </div>
                 )
             }
         })
@@ -53,21 +53,17 @@ const OtherCities = () => {
     /* Cosa esporta il componente */
     return (
         <Component>
-            <Container fluid>
-                <Row>
-                    <Col>
-                        <div className="add_city">
-                            <div className="icon">
-                                <i className="fa-solid fa-plus"></i>
-                            </div>
-                            <h3>Aggiungi città</h3>
+                <div>
+                    <div className="add_city">
+                        <div className="icon">
+                            <i className="fa-solid fa-plus"></i>
                         </div>
-                    </Col>
-                </Row>
-                <Row>
+                        <h3>Aggiungi città</h3>
+                    </div>
+                </div>
+                <div className="city_box">
                     {renderCities()}
-                </Row>
-            </Container>
+                </div>
         </Component>
     );
 };
@@ -114,6 +110,13 @@ const Component = styled.div`
 
 
     //renderCities
+    .city_box {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+
     .city {
         padding: 20px;
         border-radius: 20px;
@@ -169,10 +172,12 @@ const Component = styled.div`
         transform: translate( -22px, -15px);
     }
 
-    @media screen and (min-width: 768px) and (max-width: 992px) {
-        .row {
-            justify-content: space-around;
-            
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+        .city_box {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            justify-content: space-evenly;
         }
 
         .city {
