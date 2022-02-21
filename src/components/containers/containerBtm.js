@@ -13,7 +13,7 @@ import {Row, Col} from 'react-bootstrap';
 const ContainerBtm = () => {
     const {screen} = useSelector(screenSelector);
     const [size, setSize] = useState(window.innerWidth);
-    const [display, setDisplay] = useState('')
+    const [display, setDisplay] = useState(null)
 
     
     const dimensionSize = () => {
@@ -22,15 +22,7 @@ const ContainerBtm = () => {
 
     useEffect(() => {
         window.addEventListener('resize', dimensionSize)
-        if(size<768) {
-            if(screen) {
-                setDisplay(true)
-            } else {
-                setDisplay(false)
-            }
-        } else {
-            setDisplay('')
-        }
+
 
         return () => {
             window.removeEventListener('resize', dimensionSize);
@@ -40,8 +32,8 @@ const ContainerBtm = () => {
     console.log(display);
 
     return (
-        <Component style={(display && size<768) ? {} : {display: 'none'}}>
-            <Row className="containerBottom">
+        <Component >
+            <Row className="containerBottom" style = {(size > 768) ? {visibility: 'visible'} : ((screen) ? {} : {display: 'none'}) }>
                 <Col sm={12} md={4} lg={3} className="today">
                     <Today />
                 </Col>
@@ -60,7 +52,7 @@ const ContainerBtm = () => {
 };
 
 const Component = styled.div`
-    *{  
+    *{ 
         margin: 0;
         padding:0;
     }

@@ -42,13 +42,13 @@ const ContainerTop = () => {
     return (
         <Component>
             <Row className="containerTop">
-                <div className="hello" style={(display && size<768) ? {display: 'none'} : {}}>
+                <div className="hello" style = {(size > 768) ? {visibility: 'visible'} : ((!screen) ? {} : {display: 'none'}) } >
                     <h2>Good morning!<br />Mario</h2>
                 </div>
-                <Col lg={8} xl={8} className="left" style={(display && size<768) ? {} : {display: 'none'}} >
-                    <CurrentCity className="currentCity" />
+                <Col lg={8} xl={8} className="left" style = {(size > 768) ? {visibility: 'visible'} : ((screen) ? {} : {display: 'none'}) }>
+                    <CurrentCity className="currentCity"/>
                 </Col>
-                <Col md={12} lg={4} className="right" style={(display && size<768) ? {display: 'none'} : {}}>
+                <Col md={12} lg={4} className="right" style = {(size > 768) ? {visibility: 'visible'} : ((!screen) ? {} : {display: 'none'}) }  >
                     <OtherCities/>
                 </Col>
             </Row>

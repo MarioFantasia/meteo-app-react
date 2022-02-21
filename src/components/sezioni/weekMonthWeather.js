@@ -12,7 +12,7 @@ import styled from 'styled-components';
 const WeekWeather = () => {
     // stato della condizione per la visualizzazione dei componenti
     const [show, setShow] = useState(true);
-
+    
     //richiamo i dati con useSelector. Valori API
     const {cities} = useSelector(citiesSelector);
 
