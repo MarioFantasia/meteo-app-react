@@ -6,19 +6,15 @@ import {Container, Row, Col} from 'react-bootstrap';
 const localization = () => {
     return (
         <Component>
-            <Container>
-                <Row>
-                    <Col>
-                        <h2>Localization</h2>
-                    </Col>
-                    <Col lg={12}>
-                        <div className="gps">
-                            <i className="fa-solid fa-location-dot"></i>
-                            <h3>Add Localization</h3>
-                        </div>
-                    </Col>
-                </Row>
-            </Container>
+            <div>
+                <h2>Localization</h2>
+            </div>
+            <div lg={12}>
+                <div className="gps">
+                    <i className="fa-solid fa-location-dot"></i>
+                    <h3>Add Localization</h3>
+                </div>
+            </div>
         </Component>
     );
 };
@@ -52,7 +48,7 @@ const Component = styled.div`
         font-size: 30px;
     }
 
-    @media screen and (min-width: 768px) and (max-width: 992px) {
+    @media screen and (min-width: 768px) and (max-width: 991px) {
         width: calc((100%/ 12) * 6 - 20px);
         
         .container {
@@ -60,8 +56,8 @@ const Component = styled.div`
         }
 
         .row {
-            margin: 0;
-        }
+        margin: 0;
+    }
     }
 `;
 

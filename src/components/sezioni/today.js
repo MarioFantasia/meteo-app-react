@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { citiesSelector }  from '../../redux/sliceWeather';
 import { setObject } from '../../redux/dataWeather'
 
-import {Container, Row, Col} from 'react-bootstrap';
 import styled from 'styled-components';
 
 const Today = () => {
@@ -51,32 +50,21 @@ const Today = () => {
     /* Cosa esporta il componente */
     return (
         <Component>
-            <Container >
-                <Row>
-                    <Col>
-                        <h2>Today</h2>
-                    </Col>
-                </Row>
-                <Row className="timeline">
-                    <Col >
-                        <ul className="temperature">
-                            {todayTemp()}
-                        </ul>
-                    </Col>
+                <h2>Today</h2>
+                <div className="timeline">
+                    <ul className="temperature">
+                        {todayTemp()}
+                    </ul>
 
-                    <Col >
-                        <ul className="time">
-                            {todayHour()}
-                        </ul>
-                    </Col>
-                </Row>
-            </Container>
+                    <ul className="time">
+                        {todayHour()}
+                    </ul>
+                </div>
         </Component>
     );
 };
 
 const Component = styled.div`
-    display: flex;
 
     &::-webkit-scrollbar {
     display: none;
@@ -99,6 +87,7 @@ const Component = styled.div`
         overflow-y: scroll;
         padding: 15px 0 0 0;
         display: flex;
+        margin: auto auto 0 0;
     }
 
     .time {
@@ -226,7 +215,7 @@ const Component = styled.div`
         }
     }
 
-    @media screen and (min-width: 768px) and (max-width: 992px) {
+    @media screen and (min-width: 768px) and (max-width: 991px) {
         /* NOW */
         .time li:first-child::before{
             content: 'Now';
@@ -263,7 +252,7 @@ const Component = styled.div`
             position: relative;
         }
         
-        .timeline .col:first-child {
+        .timeline .col:first-child { //mettere al posto di col un div!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             order: 2;
         }
 

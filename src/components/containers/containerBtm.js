@@ -1,11 +1,8 @@
 import React from 'react';
-
-//componenti
 import Search from '../sezioni/search';
 import Localization from '../sezioni/localization';
 import Today from '../sezioni/today';
 import WeekWeather from '../sezioni/weekMonthWeather';
-
 import styled from 'styled-components';
 import {Row, Col} from 'react-bootstrap';
 
@@ -31,7 +28,6 @@ const ContainerBtm = () => {
     )
 };
 
-/* STYLE */
 const Component = styled.div`
     *{  
         margin: 0;
@@ -49,12 +45,13 @@ const Component = styled.div`
 
     .searchAndLocalization {
         padding: 0 10px 0 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
-
-
-
     /* MEDIA QUERY */
+    // 992 -> 1200
     @media screen and (min-width: 992px) and (max-width: 1199px) {
 
         .searchAndLocalization {
@@ -66,6 +63,7 @@ const Component = styled.div`
         .searchAndLocalization {
             padding: 0;
             display: flex;
+            flex-direction: row;
             justify-content: space-around;
             margin-top: 25px;
         }

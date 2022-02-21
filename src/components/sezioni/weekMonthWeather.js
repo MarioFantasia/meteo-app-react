@@ -30,11 +30,11 @@ const WeekWeather = () => {
             if(elm.live) {
                 return elm.weekly.map((day, index) => {
                     return (
-                        <Col key={index} lg={3} className="weekWeather">
+                        <div key={index} className="weekWeather">
                             <h3>{day.time}</h3>
                             <h2>{day.temp}°</h2>
                             <img src={day.icon} alt={elm.weather} />
-                        </Col>
+                        </div>
                         )
                 })
             }
@@ -48,7 +48,7 @@ const WeekWeather = () => {
             if(elm.live) {
                 return elm.monthly.map((day, index) => {
                     return (
-                        <Col key={index} lg={12} className="monthWeather">
+                        <div key={index} className="monthWeather">
                             <div className="box_sx">
                                 <h3>{day.time.day}, {day.time.date} {day.time.month}</h3>
                                 <div className="image">
@@ -65,7 +65,7 @@ const WeekWeather = () => {
                                     <li>Dew point: {day.other.dew_point}</li>
                                 </ul>
                             </div>
-                        </Col>
+                        </div>
                     )
                 })
             }
@@ -95,34 +95,31 @@ const WeekWeather = () => {
     /* Cosa esporta il componente */
     return (
         <Component >
-            <Container>
-                <Row className="boxSelectPeriod">
-                    <Col className="this_week">
-                        <h2 className={!show ?  'gradient' : '' } onClick={() => setShow(false)}>
-                            This week
-                        </h2>
-                    </Col>
+            <div className="boxSelectPeriod">
+                <div  className={!show ?  'gradient' : '' } onClick={() => setShow(false)} >
+                    <h2 className="this_week">
+                        This week
+                    </h2>
+                </div>
 
-                    <Col className="this_month">
-                        <h2 className={show ? 'gradient' : '' } onClick={() => setShow(true)}>
-                            This month
-                        </h2>
-                    </Col>
-                </Row>
-            </Container>
+                <div className={!show ? '' : 'gradient' } onClick={() => setShow(true)}>
+                    <h2 className="this_month" >
+                        This month
+                    </h2>
+                </div>
+            </div>
                 
-            <Container className="boxContainer">
-                <Row className="slider" id="slider">
+            <div className="boxContainer">
+                <div className="slider" id="slider">
                     { !show?  (weekInfos()) : (monthInfos()) }
-                </Row>
-                <Row>
-                    <Col className="point">
-                        <span><i id="left" className="fa-solid fa-circle" onClick={horizontalScroll} ></i> </span>
-                        <span><i id="center" className="fa-solid fa-circle" onClick={horizontalScroll} ></i> </span>
-                        <span><i id="right" className="fa-solid fa-circle" onClick={horizontalScroll} ></i> </span>
-                    </Col>
-                </Row>
-            </Container>
+                </div>
+                <div className="point">
+                    <span><i id="left" className="fa-solid fa-circle" onClick={horizontalScroll} ></i> </span>
+                    <span><i id="center" className="fa-solid fa-circle" onClick={horizontalScroll} ></i> </span>
+                    <span><i id="right" className="fa-solid fa-circle" onClick={horizontalScroll} ></i> </span>
+                </div>
+            </div>
+            
         </Component>
     )
 
@@ -130,20 +127,9 @@ const WeekWeather = () => {
 
 const Component = styled.div`
 
-    .boxContainer {
-        background: linear-gradient(#5679E8, #72aff3);
-        box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.18);
-
-        border-radius: 25px;
-        border-top-left-radius: 0;
-    }
-
-    ul {
-        padding: 0;
-    }
-
     .boxSelectPeriod {
-        width: calc(75% - 3px);
+        display: flex;
+        width: calc((100%/ 12) * 8);
         height: 77px;
         background-color: white;
         border-radius: 20px 20px 0 0;
@@ -152,33 +138,39 @@ const Component = styled.div`
     }
 
 
-    .this_week, .this_month {
+    .boxSelectPeriod div {
+        width: calc((100%/ 12) * 6);
         border: none;
         text-align: center;
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
     }
 
-    .this_week h2, .this_month h2 {
+    .this_week, .this_month {
         font-size: 25px;
         font-weight: 600;
         height: 100%;
         border-radius: 20px 20px 0 0;
-        line-height: 61px;
-        margin-bottom: 0;
+        padding-top: 20px;
     }
 
     .gradient {
         background-color: #577DE0;
         color: white;
     }
+    .boxContainer {
+        background: linear-gradient(#5679E8, #72aff3);
+        box-shadow: 6px 10px 16px 1px rgba(0,0,0,0.18);
+        border-radius: 25px;
+        border-top-left-radius: 0;
+        overflow-y: hidden;
+    }
 
     //SLIDER
     .slider {
+        width: 3000px;
         color: white;
         display: flex;
-        overflow-x: scroll;
-        overflow-y: hidden;
         flex-wrap: nowrap;
         padding: 30px 13px 10px 13px;
     }
@@ -187,26 +179,10 @@ const Component = styled.div`
         font-size: 14px;
     }
 
-    .point {
-        color: rgba(255, 255, 255, 0.5);
-        display: inline;
-        text-align: center;
-        margin-bottom: 4px;
-    }
-
-    .point i {
-        margin: 10px 5px;
-        font-size: 8px;
-    }
-
-    .point i:active {
-        color: white;
-    }
-
     /* componente info settimanale */
     .weekWeather {
         height: 300px;
-        width: calc((100%/3) - 28px);
+        width: 146px;
         color: white;
         background: linear-gradient(#6b90eb, #79aaf1);
         box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.18);
@@ -214,8 +190,8 @@ const Component = styled.div`
         margin: 0 14px;
         border-radius: 20px;
         padding-top: 20px;
-    
     }
+
 
     .weekWeather h3 {
         font-size: 19px;
@@ -234,7 +210,7 @@ const Component = styled.div`
     /* Componente info mese */
     .monthWeather {
         height: 300px;
-        width: calc(100% - 28px);
+        width: 450px;
         background: linear-gradient(#6b90eb, #79aaf1);
         box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.18);
         border-radius: 20px;
@@ -277,10 +253,33 @@ const Component = styled.div`
         font-size: 23px;
     }
 
+    // punti slider
+    .point {
+        color: rgba(255, 255, 255, 0.5);
+        display: inline;
+        text-align: center;
+        margin-left: 250px;
+        height: 20px;
+    }
+
+    .point i {
+        margin: 10px 5px;
+        font-size: 8px;
+    }
+
+    .point i:active {
+        color: white;
+    }
+
     @media screen and (min-width: 992px) and (max-width: 1199px) {
+
+        .boxSelectPeriod {
+            width: 80%;
+        }
+
         .weekWeather {
             height: 300px;
-            width: calc((100%/3) - 5px);
+            width: 146;
             color: white;
             background: linear-gradient(#6b90eb, #79aaf1);
             box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.18);
@@ -289,6 +288,11 @@ const Component = styled.div`
             border-radius: 20px;
             padding-top: 20px;
         }
+
+        .point {
+            margin-left: 180px ;
+        }
+
     }
 
     @media screen and (max-width: 767px) {

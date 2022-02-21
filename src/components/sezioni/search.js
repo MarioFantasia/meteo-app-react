@@ -1,22 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Container, Row, Col} from 'react-bootstrap';
 
 
 const search = () => {
     return (
         <Component>
-            <Container>
-                <Row>
-                    <Col >
-                        <h2>Search</h2>
-                    </Col >
-                    <Col lg={12} className="search" >
-                        <input type="text" placeholder="ex: Miami" />
-                        <button><i className="fa-solid fa-magnifying-glass"></i></button>
-                    </Col>
-                </Row>
-            </Container>
+            <div >
+                <h2>Search</h2>
+            </div >
+            <div lg={12} className="search" >
+                <input type="text" placeholder="ex: Miami" />
+                <button><i className="fa-solid fa-magnifying-glass"></i></button>
+            </div>
         </Component>
     );
 };
@@ -76,7 +71,7 @@ const Component = styled.div`
         font-size: 18px;
     }
 
-    @media screen and (min-width: 768px) and (max-width: 992px) {
+    @media screen and (min-width: 768px) and (max-width: 991px) {
         width: calc((100%/ 12) * 6 - 20px);
         
         .container {
