@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useSelector } from 'react-redux';
 import { citiesSelector }  from '../../redux/sliceWeather';
+import { screenSelector }  from '../../redux/sliceScreen';
 import { setObject } from '../../redux/dataWeather'
 
 import styled from 'styled-components';
@@ -11,7 +12,23 @@ import styled from 'styled-components';
 /* COMPONENTE */
 const WeekWeather = () => {
     // stato della condizione per la visualizzazione dei componenti
-    const [show, setShow] = useState(true);
+    const [show, setShow] = useState(false);
+    const [size, setSize] = useState(window.innerWidth);
+
+
+    const dimensionSize = () => {
+        setSize(window.innerWidth);
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', dimensionSize)
+        if(size < 768) {
+            setShow(false);
+        }
+        return () => {
+            window.removeEventListener('resize', dimensionSize);
+        }
+    });
     
     //richiamo i dati con useSelector. Valori API
     const {cities} = useSelector(citiesSelector);

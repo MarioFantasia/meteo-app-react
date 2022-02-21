@@ -13,8 +13,6 @@ import {Row, Col} from 'react-bootstrap';
 const ContainerBtm = () => {
     const {screen} = useSelector(screenSelector);
     const [size, setSize] = useState(window.innerWidth);
-    const [display, setDisplay] = useState(null)
-
     
     const dimensionSize = () => {
         setSize(window.innerWidth);
@@ -28,8 +26,6 @@ const ContainerBtm = () => {
             window.removeEventListener('resize', dimensionSize);
         }
     });
-
-    console.log(display);
 
     return (
         <Component >
