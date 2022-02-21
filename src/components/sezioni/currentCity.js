@@ -1,6 +1,7 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { citiesSelector }  from '../../redux/sliceWeather';
+import {screenFalse}  from '../../redux/sliceScreen'
 import { setObject } from '../../redux/dataWeather';
 import styled from 'styled-components';
 
@@ -18,6 +19,11 @@ const CurrentCity = () => {
     //settaggio array. Valori modificati
     setObject(setCities, cities)
 
+    const dispatch = useDispatch();
+    const changeFalseScreen = () => {
+        dispatch(screenFalse())
+    }
+
     //manipolazione dei dati
     const renderCities = () => {
 
@@ -26,7 +32,7 @@ const CurrentCity = () => {
                     return (
                         <div className="city" key={index}>
                             <div className="smartIcons">
-                                <span><i className="fa-solid fa-arrow-left"></i></span>
+                                <span><i className="fa-solid fa-arrow-left" onClick={()=>changeFalseScreen()}></i></span>
                                 <span><i className="fa-solid fa-plus"></i></span>
                             </div>
                             

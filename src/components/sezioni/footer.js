@@ -1,16 +1,24 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import {screenFalse}  from '../../redux/sliceScreen'
 import styled from 'styled-components';
 import {Container, Row, Col} from 'react-bootstrap';
 
 
 const Footer = () => {
+
+    const dispatch = useDispatch();
+    const changeFalseScreen = () => {
+        dispatch(screenFalse())
+    }
+
     return (
         <Component>
             <Container >
                 <Row>
                     <Col sm={12} className="icons_box">
                         <div>
-                            <i className="fa-solid fa-house"></i>
+                            <i className="fa-solid fa-house" onClick={()=>changeFalseScreen()}></i>
                         </div>
                         
                         <div>

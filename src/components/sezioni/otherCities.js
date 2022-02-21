@@ -1,6 +1,7 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch} from 'react-redux';
 import { citiesSelector }  from '../../redux/sliceWeather';
+import {screenTrue}  from '../../redux/sliceScreen'
 import { setObject } from '../../redux/dataWeather'
 
 import styled from 'styled-components';
@@ -14,6 +15,12 @@ const OtherCities = () => {
 
     //settaggio array. Valori modificati
     setObject(setCities, cities)
+
+    const dispatch = useDispatch();
+    const changeTrueScreen = () => {
+        dispatch(screenTrue())
+        console.log(screenTrue);
+    }
 
     //funzione per il background;
     const selectBackground = (weather) => {
@@ -33,7 +40,9 @@ const OtherCities = () => {
         return setCities.map((city, index) => {
             if(!(city.live)) {
                 return (
-                    <div key={index} className="city" style={{background: selectBackground(city.currently.weather)}}>
+                    <div key={index} className="city"
+                        style={{background: selectBackground(city.currently.weather)}}
+                        onClick={()=>changeTrueScreen()}>
                         <div className="info">
                             <h5>{city.name}</h5>
                             <p>{city.unixTime.day} {city.unixTime.date}, {city.unixTime.month}</p>

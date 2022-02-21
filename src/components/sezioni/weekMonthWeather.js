@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { useSelector } from 'react-redux';
 import { citiesSelector }  from '../../redux/sliceWeather';
-import { screenSelector }  from '../../redux/sliceScreen';
 import { setObject } from '../../redux/dataWeather'
 
 import styled from 'styled-components';
