@@ -230,6 +230,9 @@ const Component = styled.div`
 
     @media screen and (max-width: 767px) {
         justify-content: center;
+        h2 {
+            display: none;
+        }
         .container {
             max-width: 100%;
         }
@@ -249,14 +252,15 @@ const Component = styled.div`
             overflow-y: hidden;
             padding:  50px 30px;
             display: flex;
+            flex-direction: column;
             position: relative;
         }
         
-        .timeline .col:first-child { //mettere al posto di col un div!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        .timeline ul:first-child { //mettere al posto di col un div!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             order: 2;
         }
 
-        .timeline .col:last-child {
+        .timeline ul:last-child {
             order: 1;
         }
 

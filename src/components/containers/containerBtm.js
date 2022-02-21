@@ -71,6 +71,7 @@ const Component = styled.div`
 
     @media screen and (max-width:767px){
         display: none;
+
         .searchAndLocalization {
             display: none;
         }

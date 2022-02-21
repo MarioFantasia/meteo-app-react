@@ -88,7 +88,7 @@ const CurrentWeather = () => {
         justify-content: center;
 
         .box {
-            height: 180px;
+            height: 170px;
             position: inherit;
             display: flex;
             flex-direction: row;
@@ -111,6 +111,10 @@ const CurrentWeather = () => {
 
 
     @media screen and (max-width: 767px) {
+        position: relative;
+        justify-content: center;
+
+
         .box {
             display: flex;
             border-radius: 0 20px 20px 0;
@@ -118,8 +122,9 @@ const CurrentWeather = () => {
             color: white;
             background: transparent;
             box-shadow: none;
-            transform:translate(250px, 70px);
             transform: rotate(90deg);
+            margin: 0 auto;
+            position: initial;
             margin: 0 auto;
         }
 
@@ -132,7 +137,7 @@ const CurrentWeather = () => {
         }
 
         img {
-            width: 200px;
+            width: 180px;
         }
     }
 `;

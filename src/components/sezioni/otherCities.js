@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { citiesSelector }  from '../../redux/sliceWeather';
 import { setObject } from '../../redux/dataWeather'
 
-import {Container, Row, Col} from 'react-bootstrap';
 import styled from 'styled-components';
 
 const OtherCities = () => {
@@ -125,6 +124,7 @@ const Component = styled.div`
         display: flex;
         justify-content: space-between;
         box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.18);
+        position: relative;
         }
 
     .info, img, h2 {
@@ -192,8 +192,14 @@ const Component = styled.div`
     @media screen and (max-width: 767px) {
         height: 200px;
         
-        .city {
+        img {
+            width: 110px;
+            position: absolute;
+            transform: translate( -28px, -5px);
+        }
 
+        h2 {
+            font-size: 40px;
         }
     }
 `; 

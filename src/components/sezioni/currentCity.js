@@ -31,9 +31,12 @@ const CurrentCity = () => {
                                 <span><i class="fa-solid fa-arrow-left"></i></span>
                                 <span><i className="fa-solid fa-plus"></i></span>
                             </div>
-                            <h2>{city.name}</h2>
-                            <h3>{city.unixTime.day} {city.unixTime.date}, {city.unixTime.month}</h3>
-                            <h4>{city.currently.weather}</h4>
+                            
+                            <div className="box_city">
+                                <h2>{city.name}</h2>
+                                <h3>{city.unixTime.day} {city.unixTime.date}, {city.unixTime.month}</h3>
+                                <h4>{city.currently.weather}</h4>
+                            </div>
                         </div>
                     );
                 }
@@ -63,7 +66,6 @@ const Component = styled.div`
     }
 
     .city {
-        width: 200px;
         color: #01175F;
         display: flex;
         flex-direction: column;
@@ -123,20 +125,23 @@ const Component = styled.div`
     }
 
     @media screen and (max-width:767px){
-        height: 380px;
-        margin: 0 auto;
         width: 100%;
+        height: 280px;
+        margin: 0 auto;
         background: transparent;
         border-radius: 20px;
         box-shadow: 0px 0px 10px rgba(0,0,0,0.0);
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
+
         
         .smartIcons {
-            display: flex;
             width: 100%;
+            height:1px;
+            display: flex;
             justify-content: space-between;
             padding: 0 15px;
+            transform: translateY(15px);
         }
 
         .smartIcons span:first-child {
@@ -151,15 +156,21 @@ const Component = styled.div`
             height: 30px;
             padding-top: 4px;
             border-radius: 10px;
+            transform: translateY(3px);
         }
 
         .city {
             width: 100%;
             color: white;
             display: flex;
+            flex-direction: column;
             text-align: center;
             margin: 0 auto;
-            transform: translateY(40px);
+            position: initial;
+        }
+
+        .box_city {
+            margin: 0 auto;
         }
 
         .city h2 {

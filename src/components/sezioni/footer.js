@@ -35,6 +35,8 @@ const Component = styled.div`
     text-align: center;
     justify-items: center;
     display: none;
+    margin-top: auto;
+    
 
     .icons_box {
         display: flex;
@@ -55,7 +57,6 @@ const Component = styled.div`
 
     @media screen and (max-width: 767px){
         display: flex;
-        
     }
 `;
 

@@ -44,13 +44,20 @@ const Component = styled.div`
 
     @media screen and (max-width: 767px) {
         background: linear-gradient(#567AE8, #71AEF0);
-        height: 100vh;
-        padding: 0;
-        overflow-x: hidden;
+        padding: 1px;
         flex-direction: column;
         justify-content: space-between;
+        overflow-x: hidden;
 
-        
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            margin: 0 auto;
+            height: 100vh;
+            padding: 5px
+        }
     }   
 
 `;

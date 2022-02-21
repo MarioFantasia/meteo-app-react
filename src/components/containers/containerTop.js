@@ -13,11 +13,11 @@ const ContainerTop = () => {
     return (
         <Component>
             <Row className="containerTop">
+                <div className="hello">
+                    <h2>Good morning!<br />Mario</h2>
+                </div>
                 <Col lg={8} xl={8} className="left" >
                     <CurrentCity className="currentCity" />
-                </Col>
-                <Col>
-                    <h2>Good morning!<br />Mario</h2>
                 </Col>
                 <Col md={12} lg={4} className="right">
                     <OtherCities/>
@@ -36,15 +36,13 @@ const Component = styled.div`
         padding:0;
     }
 
-    .containerTop {
-        justify-content: center;        
-    }
+    
 
     .right {
         padding: 0 10px 0 50px;
     }
 
-    .col:nth-child(2) h2 {
+    .hello {
         display: none;
     }
 
@@ -67,29 +65,27 @@ const Component = styled.div`
     @media screen and (max-width:767px){
         display: flex;
         flex-direction: column;
-        height: 630px;
+
+        .containerTop {
+            height: 300px
+        }
 
         .left {
             display: none;
             //display: flex;
-
-            height:0;
         }
 
         .right {
             padding: 0 20px;
             //display: none;
             display: flex;
-
+            flex-direction: column;
         }
 
-        .col:nth-child(2) {
-            display: flex;
-            //display: none;
-        }
-
-        .col:nth-child(2) h2{
-            display: inline-block;
+        .hello{
+            display: none;
+            height: 50px;
+            //display: inline-block;
             text-align: center;
             margin: 0 auto;
         }

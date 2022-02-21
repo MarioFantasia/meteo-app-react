@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { citiesSelector }  from '../../redux/sliceWeather';
 import { setObject } from '../../redux/dataWeather'
 
-import {Container, Row, Col} from 'react-bootstrap';
 import styled from 'styled-components';
 
 
@@ -302,7 +301,7 @@ const Component = styled.div`
             box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.0);
         }
 
-        .container:first-child {
+        .boxSelectPeriod {
             display: none;
         }
 
@@ -311,7 +310,7 @@ const Component = styled.div`
         }
 
         .slider {
-            width: 750px;
+            width: 1000px;
         }
 
         .boxContainer {
@@ -320,8 +319,8 @@ const Component = styled.div`
         }
 
         .weekWeather {
-            height: 300px;
-            width: calc(100%/5);
+            height: 220px;
+            width: 146px;
             color: white;
             box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.18);
             text-align:center;
@@ -329,7 +328,10 @@ const Component = styled.div`
             border-radius: 20px;
             padding-top: 20px;
             background: linear-gradient(#567AE8, #71AEF0);
+        }
 
+        .monthWeather {
+            //display: none;
         }
 
         .point {
