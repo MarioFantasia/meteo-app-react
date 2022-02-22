@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import {screenFalse}  from '../../redux/sliceScreen'
 import styled from 'styled-components';
-import {Container, Row, Col} from 'react-bootstrap';
+import { Row, Col} from 'react-bootstrap';
 
 
 const Footer = () => {
@@ -14,23 +14,19 @@ const Footer = () => {
 
     return (
         <Component>
-            <Container >
-                <Row>
-                    <Col sm={12} className="icons_box">
-                        <div>
-                            <i className="fa-solid fa-house" onClick={()=>changeFalseScreen()}></i>
-                        </div>
-                        
-                        <div>
-                            <i className="fa-solid fa-magnifying-glass"></i>
-                        </div>
-                        
-                        <div>
-                            <i className="fa-solid fa-location-dot"></i>
-                        </div>
-                    </Col>
-                </Row>
-            </Container>
+            <Col sm={12} className="icons_box">
+                <div>
+                    <i className="fa-solid fa-house" onClick={()=>changeFalseScreen()}></i>
+                </div>
+                
+                <div>
+                    <i className="fa-solid fa-magnifying-glass"></i>
+                </div>
+                
+                <div>
+                    <i className="fa-solid fa-location-dot"></i>
+                </div>
+            </Col>
         </Component>
     );
 };
@@ -43,7 +39,6 @@ const Component = styled.div`
     text-align: center;
     justify-items: center;
     display: none;
-    margin-top: auto;
     box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.18);
     
 
@@ -68,6 +63,12 @@ const Component = styled.div`
 
     @media screen and (max-width: 767px){
         display: flex;
+        margin-top: 475px;
+        margin-bottom: 10px;
+
+        .icons_box {
+            width: 100%;
+        }
     }
 `;
 

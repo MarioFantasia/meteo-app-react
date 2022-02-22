@@ -54,6 +54,7 @@ const Component = styled.div`
 //MEDIA QUERY
     @media screen and (min-width: 768px) and (max-width: 991px){
         padding: 10px;
+        overflow-x: hidden;
 
     }
 

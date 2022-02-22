@@ -38,7 +38,7 @@ const OtherCities = () => {
     //manipolazione dei dati
     const renderCities = () => {
         return setCities.map((city, index) => {
-            if(!(city.live)) {
+
                 return (
                     <div key={index} className="city"
                         style={{background: selectBackground(city.currently.weather)}}
@@ -55,7 +55,7 @@ const OtherCities = () => {
                         <h2>{city.currently.temp}°</h2>
                     </div>
                 )
-            }
+
         })
     }
 
@@ -123,6 +123,8 @@ const Component = styled.div`
         display: flex;
         flex-direction: column;
         width: 100%;
+        height: 310px;
+        overflow-x: scroll;
     }
 
 
@@ -136,6 +138,10 @@ const Component = styled.div`
         box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.18);
         position: relative;
         }
+
+    .city:first-child {
+        display: none;
+    }
 
     .info, img, h2 {
         display: flex;
@@ -186,8 +192,9 @@ const Component = styled.div`
         .city_box {
             display: flex;
             flex-direction: row;
-            width: 100%;
             justify-content: space-evenly;
+            height: 150px;
+            overflow-x: scroll;
         }
 
         .city {
@@ -200,7 +207,17 @@ const Component = styled.div`
     }
     
     @media screen and (max-width: 767px) {
-        height: 200px;
+        height: 700px;
+
+        .city_box {
+            height:600px;
+            overflow-y: scroll;
+            justify-content: space-evenly;
+        }
+
+        .city:first-child {
+            display: flex;
+        }
         
         img {
             width: 110px;
