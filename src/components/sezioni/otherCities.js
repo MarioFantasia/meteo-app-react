@@ -17,6 +17,8 @@ const OtherCities = () => {
     //settaggio array. Valori modificati
     setObject(setCities, cities)
 
+    //per avere sempre l'elemento con visible true in cima. Utile per il cambio di larghezza schermo
+    //sino a 767px visualizzo tutti, da 768 in poi solo quelli non presenti nella sezione principale 'currentCity'
     orderArrayElm(arrCities, setCities);
 
     const dispatch = useDispatch();
@@ -44,7 +46,7 @@ const OtherCities = () => {
                 return (
                     <div key={index} className="city"
                         style={{background: selectBackground(city.currently.weather)}}
-                            onClick={()=>{changeTrueScreen(); dispatch(changeCityView(index))}}>
+                            onClick={()=>{changeTrueScreen()/* ; dispatch(changeCityView(index)) */}}>
                         <div className="info">
                             <h5>{city.name}</h5>
                             <p>{city.unixTime.day} {city.unixTime.date}, {city.unixTime.month}</p>
@@ -188,6 +190,8 @@ const Component = styled.div`
         position : absolute;
         transform: translate( -22px, -15px);
     }
+
+    //MEDIA QUERY
 
     @media screen and (min-width: 768px) and (max-width: 991px) {
         .city_box {

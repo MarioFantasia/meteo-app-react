@@ -73,6 +73,7 @@ const Component = styled.div`
             margin: 0 auto;
             height: 100vh;
             padding: 0 18px 18px 18px;
+            justify-content: flex-end;
         }
     }   
 

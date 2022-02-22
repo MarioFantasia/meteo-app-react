@@ -78,7 +78,7 @@ const Component = styled.div`
     @media screen and (max-width: 767px){
         display: flex;
         margin-top: 0;
-        margin-bottom: 20px;
+        justify-self: end;
 
         .icons_box {
             width: 100%;
