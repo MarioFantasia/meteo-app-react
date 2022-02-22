@@ -69,10 +69,10 @@ const Component = styled.div`
         .main {
             display: flex;
             flex-direction: column;
-            width: 100vw;
+            width: calc(100vw -500px);
             margin: 0 auto;
             height: 100vh;
-            padding: 18px
+            padding: 0 18px 18px 18px;
         }
     }   
 

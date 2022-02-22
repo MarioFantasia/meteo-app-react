@@ -165,6 +165,7 @@ const Component = styled.div`
 
         .city {
             width: 100%;
+            height: 70px;
             color: white;
             display: flex;
             flex-direction: column;

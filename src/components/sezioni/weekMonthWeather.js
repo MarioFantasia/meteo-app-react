@@ -347,9 +347,11 @@ const Component = styled.div`
 
         .slider {
             width: 1000px;
+            padding-top: 5px;
         }
 
         .boxContainer {
+            padding: 0;
             background: transparent;
             box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.0);
         }

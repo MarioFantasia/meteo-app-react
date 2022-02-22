@@ -1,11 +1,25 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import {screenFalse}  from '../../redux/sliceScreen'
+import React, {useState, useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {screenFalse, screenSelector }  from '../../redux/sliceScreen'
 import styled from 'styled-components';
 import { Col} from 'react-bootstrap';
 
 
 const Footer = () => {
+
+    const {screen} = useSelector(screenSelector);
+    const [size, setSize] = useState(window.innerWidth);
+
+    const dimensionSize = () => {
+        setSize(window.innerWidth);
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', dimensionSize)
+        return () => {
+            window.removeEventListener('resize', dimensionSize);
+        }
+    });
 
     const dispatch = useDispatch();
     const changeFalseScreen = () => {
@@ -13,7 +27,7 @@ const Footer = () => {
     }
 
     return (
-        <Component>
+        <Component style = {(size > 768) ? {visibility: 'visible'} : ((!screen) ? {marginTop: '400px'} : {})}>
             <Col sm={12} className="icons_box">
                 <div>
                     <i className="fa-solid fa-house" onClick={()=>changeFalseScreen()}></i>
@@ -63,8 +77,8 @@ const Component = styled.div`
 
     @media screen and (max-width: 767px){
         display: flex;
-        margin-top: 475px;
-        margin-bottom: 10px;
+        margin-top: 0;
+        margin-bottom: 20px;
 
         .icons_box {
             width: 100%;

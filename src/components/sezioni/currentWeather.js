@@ -113,7 +113,7 @@ const CurrentWeather = () => {
     @media screen and (max-width: 767px) {
         position: relative;
         justify-content: center;
-
+        height: 400px;
 
         .box {
             display: flex;

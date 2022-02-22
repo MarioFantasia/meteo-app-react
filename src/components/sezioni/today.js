@@ -85,7 +85,6 @@ const Component = styled.div`
         background: linear-gradient(#5679E8, #6FA5EA);
         box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.18);
         overflow-y: scroll;
-        padding: 15px 0 0 0;
         display: flex;
         margin: auto auto 0 0;
     }

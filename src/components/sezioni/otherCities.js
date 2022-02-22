@@ -209,9 +209,9 @@ const Component = styled.div`
     
     @media screen and (max-width: 767px) {
         height: 700px;
-
+        justify-content:space-evenly;
         .city_box {
-            height:600px;
+            height:500px;
             overflow-y: scroll;
             justify-content: space-evenly;
         }
