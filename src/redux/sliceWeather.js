@@ -44,7 +44,7 @@ export function fetchCities() {
     
     return async dispatch => {
         query.forEach((elm, index) => {
-            axios.get(`https://api.openweathermap.org/data/2.5/find?q=${elm}&units=metric&lang=en&appid=0d6d479b0b4b388d9c4d41d2fe49e171`, {
+            axios.get(`https://api.openweathermap.org/data/2.5/find?q=${elm}&units=metric&lang=en&appid=${process.env.REACT_APP_API_KEY}`, {
             }).then(response => {
                 /* 
                 Nei dati dell'API, se ci sono piu elementi per la stessa ricerca, il primo elemento ha il nome completo della città 
@@ -63,7 +63,7 @@ export function fetchCities() {
 
             }).then((coord) => {
                 
-                axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${coord[0]}&lon=${coord[1]}&exclude=minutely,alerts&units=metric&lang=en&appid=0d6d479b0b4b388d9c4d41d2fe49e171`, {
+                axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${coord[0]}&lon=${coord[1]}&exclude=minutely,alerts&units=metric&lang=en&appid=${process.env.REACT_APP_API_KEY}`, {
                 }).then(response => {
                     //inseirsco la risposta in un oggetto
                     const object = response.data;
