@@ -14,7 +14,6 @@ import {Row, Col} from 'react-bootstrap';
 const ContainerTop = () => {
     const {screen} = useSelector(screenSelector);
     const [size, setSize] = useState(window.innerWidth);
-    const [display, setDisplay] = useState('')
 
     
     const dimensionSize = () => {
@@ -23,16 +22,6 @@ const ContainerTop = () => {
 
     useEffect(() => {
         window.addEventListener('resize', dimensionSize)
-        if(size<768) {
-            if(screen) {
-                setDisplay(true)
-            } else {
-                setDisplay(false)
-            }
-        } else {
-            setDisplay('')
-        }
-
         return () => {
             window.removeEventListener('resize', dimensionSize);
         }
@@ -42,13 +31,13 @@ const ContainerTop = () => {
     return (
         <Component>
             <Row className="containerTop">
-                <div className="hello" style = {(size > 768) ? {visibility: 'visible'} : ((!screen) ? {} : {display: 'none'}) } >
+                <div className="hello" style = {(size > 767) ? {visibility: 'visible'} : ((!screen) ? {} : {display: 'none'}) } >
                     <h2>Good morning!<br />Mario</h2>
                 </div>
-                <Col lg={8} xl={8} className="left" style = {(size > 768) ? {visibility: 'visible'} : ((screen) ? {} : {display: 'none'}) }>
+                <Col lg={8} xl={8} className="left" style = {(size > 767) ? {visibility: 'visible'} : ((screen) ? {} : {display: 'none'}) }>
                     <CurrentCity className="currentCity"/>
                 </Col>
-                <Col md={12} lg={4} className="right" style = {(size > 768) ? {visibility: 'visible'} : ((!screen) ? {} : {display: 'none'}) }  >
+                <Col md={12} lg={4} className="right" style = {(size > 767) ? {visibility: 'visible'} : ((!screen) ? {} : {display: 'none'}) }  >
                     <OtherCities/>
                 </Col>
             </Row>
@@ -74,8 +63,6 @@ const Component = styled.div`
     .hello {
         display: none;
     }
-
-
 
 
      /* MEDIA QUERY */
@@ -114,6 +101,12 @@ const Component = styled.div`
             display: inline-block;
             text-align: center;
             margin: 0 auto;
+        }
+
+        .hello h2 {
+            font-weight: 700;
+            color: #2d3f7a;
+
         }
     }
 `;

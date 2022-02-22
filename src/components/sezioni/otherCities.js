@@ -43,6 +43,7 @@ const OtherCities = () => {
                     <div key={index} className="city"
                         style={{background: selectBackground(city.currently.weather)}}
                         onClick={()=>changeTrueScreen()}>
+                        
                         <div className="info">
                             <h5>{city.name}</h5>
                             <p>{city.unixTime.day} {city.unixTime.date}, {city.unixTime.month}</p>
@@ -103,7 +104,7 @@ const Component = styled.div`
 
     .add_city h3 {
         font-size: 20px;
-        font-weight: 700;
+        font-weight: 600;
         color: #2d3f7a;
         margin: auto 0;
     }
@@ -204,13 +205,18 @@ const Component = styled.div`
         img {
             width: 110px;
             position: absolute;
-            transform: translate( -28px, -5px);
+            transform: translate( -25px, -5px);
         }
 
         h2 {
             font-size: 40px;
         }
+
+        .add_city h3 {
+            font-weight: 800;
+        }
     }
+
 `; 
 
 export default OtherCities;

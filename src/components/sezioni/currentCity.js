@@ -28,7 +28,7 @@ const CurrentCity = () => {
     const renderCities = () => {
 
         return setCities.map((city, index) => {
-                if (city.id === 1) {
+                if (city.live) {
                     return (
                         <div className="city" key={index}>
                             <div className="smartIcons">

@@ -29,7 +29,7 @@ const ContainerBtm = () => {
 
     return (
         <Component >
-            <Row className="containerBottom" style = {(size > 768) ? {visibility: 'visible'} : ((screen) ? {} : {display: 'none'}) }>
+            <Row className="containerBottom" style = {(size > 767) ? {visibility: 'visible'} : ((screen) ? {} : {display: 'none'}) }>
                 <Col sm={12} md={4} lg={3} className="today">
                     <Today />
                 </Col>
@@ -70,7 +70,6 @@ const Component = styled.div`
     }
 
     /* MEDIA QUERY */
-    // 992 -> 1200
     @media screen and (min-width: 992px) and (max-width: 1199px) {
 
         .searchAndLocalization {

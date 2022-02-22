@@ -44,6 +44,7 @@ const Component = styled.div`
     justify-items: center;
     display: none;
     margin-top: auto;
+    box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.18);
     
 
     .icons_box {
@@ -51,16 +52,18 @@ const Component = styled.div`
         padding: 0 20px;
         justify-content: space-between;
         justify-items: center;
-        line-height: 64px;
+        justify-items: center;
     }
 
     .icons_box div {
-        width: 50px;
+        
+        width: 60px;
         font-size: 30px;
+        line-height: 61px;
     }
 
     .icons_box div:hover {
-        border-bottom: 1px solid black;
+        border-bottom: 3px solid black;
     }
 
     @media screen and (max-width: 767px){

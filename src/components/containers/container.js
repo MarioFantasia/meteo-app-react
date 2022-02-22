@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import { useSelector } from 'react-redux';
+import { screenSelector }  from '../../redux/sliceScreen';
 
 /* Componenti */
 import ContainerTop from './containerTop';
@@ -12,12 +14,22 @@ import {Container} from 'react-bootstrap';
 
 
 const MainContainer = () => {
-    
+    const {screen} = useSelector(screenSelector);
+    const [size, setSize] = useState(window.innerWidth);
 
+    const dimensionSize = () => {
+        setSize(window.innerWidth);
+    }
 
+    useEffect(() => {
+        window.addEventListener('resize', dimensionSize)
+        return () => {
+            window.removeEventListener('resize', dimensionSize);
+        }
+    });
 
     return (
-        <Component style>
+        <Component style = {(size > 768) ? {visibility: 'visible'} : ((!screen) ? {background: '#F1F1F1'} : {})}>
             <Container className="main" fluid="lg">
                 <ContainerTop />
                 <ContainerBtm/>
@@ -29,7 +41,6 @@ const MainContainer = () => {
 
 //STYLE
 const Component = styled.div`
-    
     display: flex;
     font-family: 'Poppins', sans-serif;
     background-color: #F1F1F1;
@@ -60,7 +71,7 @@ const Component = styled.div`
             width: 100vw;
             margin: 0 auto;
             height: 100vh;
-            padding: 5px
+            padding: 18px
         }
     }   
 

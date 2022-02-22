@@ -328,8 +328,8 @@ const Component = styled.div`
         //indicatori successvi
         .temperature li::after {
             content: '';
-            width: 16px;
-            height: 16px;
+            width: 17px;
+            height: 17px;
             border-radius: 50%;
             background-color: white;
             position: absolute;
@@ -351,7 +351,7 @@ const Component = styled.div`
         .temperature li:not(:first-child, :last-child)::before {
             content: '';
             height: 8px;
-            width: 78px;
+            width: 81px;
             background-color: rgba(255,255,255,0.5);
             position: absolute;
             transform: translate(14px, -25px);

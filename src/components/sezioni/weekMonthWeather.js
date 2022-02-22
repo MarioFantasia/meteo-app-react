@@ -124,16 +124,16 @@ const WeekWeather = () => {
                 </div>
             </div>
                 
-            <div className="boxContainer">
-                <div className="slider" id="slider">
+            <div className="boxContainer" style={!show ? {borderTopLeftRadius: '0'}:{}}>
+                <div className="slider" id="slider" style={!show ? {width: '1450px'}:{}}>
                     { !show?  (weekInfos()) : (monthInfos()) }
                 </div>
-                <div className="point">
+            </div>
+            <div className="point">
                     <span><i id="left" className="fa-solid fa-circle" onClick={horizontalScroll} ></i> </span>
                     <span><i id="center" className="fa-solid fa-circle" onClick={horizontalScroll} ></i> </span>
                     <span><i id="right" className="fa-solid fa-circle" onClick={horizontalScroll} ></i> </span>
                 </div>
-            </div>
             
         </Component>
     )
@@ -151,6 +151,8 @@ const Component = styled.div`
         border-radius: 20px 20px 0 0;
         box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.18);
         margin-top: -16px;
+        position: relative;
+        z-index: 2;
     }
 
 
@@ -160,6 +162,7 @@ const Component = styled.div`
         text-align: center;
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
+        border-radius: 20px 20px 0 0;
     }
 
     .this_week, .this_month {
@@ -170,6 +173,18 @@ const Component = styled.div`
         padding-top: 20px;
     }
 
+    .boxSelectPeriod::before {
+        content: '';
+        width: 50px;
+        height: 50px;
+        background-color: white;
+        z-index: 0;
+        left: 0;
+        top: 77px;
+        position: absolute;
+        
+    }
+
     .gradient {
         background-color: #577DE0;
         color: white;
@@ -178,14 +193,16 @@ const Component = styled.div`
         background: linear-gradient(#5679E8, #72aff3);
         box-shadow: 6px 10px 16px 1px rgba(0,0,0,0.18);
         border-radius: 25px;
-        border-top-left-radius: 0;
+        //border-top-left-radius: 0;
         overflow-y: hidden;
         padding-bottom: 32px;
+        position: relative;
+        z-index: 2;
     }
 
     //SLIDER
     .slider {
-        width: 3000px;
+        width: 4000px;
         color: white;
         display: flex;
         flex-wrap: nowrap;
@@ -227,13 +244,14 @@ const Component = styled.div`
     /* Componente info mese */
     .monthWeather {
         height: 300px;
-        width: 450px;
+        width: 440px;
         background: linear-gradient(#6b90eb, #79aaf1);
         box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.18);
         border-radius: 20px;
         display: flex;
-        margin: 0 14px;
+        margin: 0 auto;
         padding: 20px;
+        
     }
 
     .box_sx {
@@ -276,7 +294,7 @@ const Component = styled.div`
         margin-left: 250px;
         position: absolute;
         bottom: 0;
-
+        z-index: 3;
     }
 
     .point i {
@@ -296,7 +314,7 @@ const Component = styled.div`
 
         .weekWeather {
             height: 300px;
-            width: 146;
+            width: 146px;
             color: white;
             background: linear-gradient(#6b90eb, #79aaf1);
             box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.18);
@@ -337,7 +355,7 @@ const Component = styled.div`
         }
 
         .weekWeather {
-            height: 220px;
+            height: 260px;
             width: 146px;
             color: white;
             box-shadow: 6px 4px 16px 1px rgba(0,0,0,0.18);
