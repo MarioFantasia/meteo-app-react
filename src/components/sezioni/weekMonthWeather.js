@@ -87,25 +87,6 @@ const WeekWeather = () => {
         })
     }
 
-    const horizontalScroll = (e) => {
-        if (e.target.id === 'left') {
-            return document.getElementById('slider').scrollLeft = 0;
-
-        } else if (e.target.id === 'center') {
-            if(show) {
-                return document.getElementById('slider').scrollLeft = 645
-            } else {
-                return document.getElementById('slider').scrollLeft -= 645 
-            }
-        } else {
-            if(show) {
-                return document.getElementById('slider').scrollLeft = 1250
-            } else {
-                return document.getElementById('slider').scrollLeft += 645 
-            }
-        }
-    }
-
 
     /* Cosa esporta il componente */
     return (
@@ -130,9 +111,9 @@ const WeekWeather = () => {
                 </div>
             </div>
             <div className="point">
-                    <span><i id="left" className="fa-solid fa-circle" onClick={horizontalScroll} ></i> </span>
-                    <span><i id="center" className="fa-solid fa-circle" onClick={horizontalScroll} ></i> </span>
-                    <span><i id="right" className="fa-solid fa-circle" onClick={horizontalScroll} ></i> </span>
+                    <span><i id="left" className="fa-solid fa-circle" ></i> </span>
+                    <span><i id="center" className="fa-solid fa-circle" ></i> </span>
+                    <span><i id="right" className="fa-solid fa-circle" ></i> </span>
                 </div>
             
         </Component>

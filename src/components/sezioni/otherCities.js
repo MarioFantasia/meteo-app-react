@@ -223,7 +223,7 @@ const Component = styled.div`
         img {
             width: 110px;
             position: absolute;
-            transform: translate( -25px, -5px);
+            transform: translate( -30px, -5px);
         }
 
         h2 {
