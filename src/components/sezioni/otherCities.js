@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import { citiesSelector }  from '../../redux/sliceWeather';
 import {screenTrue}  from '../../redux/sliceScreen'
-import { setObject } from '../../redux/dataWeather'
+import { setObject, orderArrayElm } from '../../redux/dataWeather'
 
 import styled from 'styled-components';
 
@@ -12,14 +12,20 @@ const OtherCities = () => {
 
     //inizializzo array in cui inserire i dati settati
     const setCities = [];
+    const arrCities = [];
 
     //settaggio array. Valori modificati
     setObject(setCities, cities)
 
+    console.log(setCities);
+
+    orderArrayElm(arrCities, setCities);
+
+    console.log(arrCities);
+
     const dispatch = useDispatch();
     const changeTrueScreen = () => {
         dispatch(screenTrue())
-        console.log(screenTrue);
     }
 
     //funzione per il background;

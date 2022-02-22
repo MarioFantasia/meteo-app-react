@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import {screenFalse}  from '../../redux/sliceScreen'
 import styled from 'styled-components';
-import { Row, Col} from 'react-bootstrap';
+import { Col} from 'react-bootstrap';
 
 
 const Footer = () => {
