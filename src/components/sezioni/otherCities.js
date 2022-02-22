@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch} from 'react-redux';
-import { citiesSelector }  from '../../redux/sliceWeather';
+import { citiesSelector, changeCityView }  from '../../redux/sliceWeather';
 import {screenTrue}  from '../../redux/sliceScreen'
-import { setObject, orderArrayElm } from '../../redux/dataWeather'
+import { setObject, orderArrayElm} from '../../redux/dataWeather'
 
 import styled from 'styled-components';
 
@@ -17,11 +17,7 @@ const OtherCities = () => {
     //settaggio array. Valori modificati
     setObject(setCities, cities)
 
-    console.log(setCities);
-
     orderArrayElm(arrCities, setCities);
-
-    console.log(arrCities);
 
     const dispatch = useDispatch();
     const changeTrueScreen = () => {
@@ -48,8 +44,7 @@ const OtherCities = () => {
                 return (
                     <div key={index} className="city"
                         style={{background: selectBackground(city.currently.weather)}}
-                        onClick={()=>changeTrueScreen()}>
-                        
+                            onClick={()=>{changeTrueScreen(); dispatch(changeCityView(index))}}>
                         <div className="info">
                             <h5>{city.name}</h5>
                             <p>{city.unixTime.day} {city.unixTime.date}, {city.unixTime.month}</p>

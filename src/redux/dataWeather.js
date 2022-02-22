@@ -27,13 +27,12 @@ export function setObject (newArr, oldArr) {
 }
 
 
-//const pos = oldArr.findIndex(elm => elm.live===true);  
+//
 /* Funzione per il posizonamento dell'elemento avente live===true SEMPRE nella prima posizione*/
 export function orderArrayElm ( newArr = [], oldArr) {
     return oldArr.map((elm, index) => {
-        if(elm.id === 1 && index!==0) {
+        if(elm.live === true && index!==0) {
             const pos = oldArr.findIndex(elm => elm.id === 1);
-            console.log(pos);
             const tmp = newArr[0];
             newArr[0] = oldArr[pos]
             newArr[pos] = tmp;
@@ -49,6 +48,17 @@ export function orderArrayElm ( newArr = [], oldArr) {
 
     })
 }
+
+/* funzione per cambiare la visualizzazione della citta principale */
+/* export function changeCityView (arr, i) {
+    return arr.map((elm) => {
+        if(elm.live === true) {
+            elm.live = false
+        }
+        arr[i].live = true;
+
+    });
+} */
 
 
 /* FUSO ORARIO */

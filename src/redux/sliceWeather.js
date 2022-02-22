@@ -1,9 +1,9 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, current } from '@reduxjs/toolkit'
 import axios from 'axios'
 
 
 /* INIZIALIZZAZIONE STATO INIZIALE */
-export const initialState = {
+const initialState = {
     cities: [],
 }
 
@@ -17,12 +17,16 @@ const citiesSlice = createSlice({
         getCitiesSuccess: (state,  {payload} ) => {
             state.cities = state.cities.concat(payload);
         },
+
+        /* changeCityView: (state, {payload}) => {
+            state.cities = current(state);
+        } */
     }
 });
 
 
 /* ACTIONS, SELECTOR, REDUCERS */
-export const { getCitiesSuccess } = citiesSlice.actions
+export const { getCitiesSuccess, changeCityView } = citiesSlice.actions
 
 export const citiesSelector = state => state.cities;
 
